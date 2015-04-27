@@ -52,16 +52,5 @@ function git-branch-prompt {
   if [ $branch ]; then printf "\n[$Yellow%s$frame]\n" $branch; fi
 }
 
-#export PS1="\n\[$bcyan\] \d \T \[$rst\]\n> \[$grn\]\w\[$rst\]\n\[$root\]\u@\h\[$rst\] $p "
-#export PS1="\n\[$Cyan\]┌─[\[$root\]\u\[$Cyan\]@\[$root\]\h\[$Cyan\]]-[\[$White\]\d \T\[$Cyan\]]-[\[$White\]\w\[$Cyan\]]\n\[$Cyan\]└─[\[$root\]$p\[$Cyan\]]->\[$Colour_Off\] "
-
-#export PS1="\n\[$frame\][\[$root\]\u\[$frame\]@\[$root\]\h\[$frame\]] [\[$root\]\d \T\[$frame\]] [\[$root\]\w\[$frame\]]\n\[$frame\]\[$root\]$p\[$frame\]\[$Colour_Off\] "
-
-#export PS1="\n\[$frame\]┌─[\[$root\]\u\[$frame\]@\[$root\]\h\[$frame\]] [\[$root\]\d \T\[$frame\]] [\[$root\]\w\[$frame\]]\n\[$frame\]└─[\[$root\]$p\[$frame\]]\[$Colour_Off\] "
-
 export PS1="\n\[$frame\][\[$root\]\u\[$frame\]@\[$root\]\h\[$frame\]] [\[$root\]\d \T\[$frame\]] [\[$root\]\w\[$frame\]] \$(git-branch-prompt)\n\[$frame\]\[$root\]$p\[$frame\]\[$Colour_Off\] "
-
 export PROMPT_COMMAND='echo -ne "\033]0;$P $LOGNAME@$HOSTNAME $P\007"'
-#if [ -n "$DISPLAY" ]; then printf "\nDISPLAY is set to $DISPLAY\n";fi
-#echo ""
-#w
