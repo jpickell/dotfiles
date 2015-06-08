@@ -45,25 +45,27 @@ case "$UNAME" in
 esac
 
 case "$HOSTNAME" in
-        sand*) frame=$Gray
+        sand*) hc=$Cyan
                 ;;
-        snd*) frame=$Gray
+        snd*) hc=$Cyan
                 ;;
-        dev*) frame=$Green
+        dev*) hc=$Green
                 ;;
-        test*) frame=$Yellow
+        test*) hc=$Yellow
                 ;;
-        tst*) frame=$Yellow
+        tst*) hc=$Yellow
                 ;;
-        prod*) frame=$Red
+        prod*) hc=$Red
                 ;;
-        prd*) frame=$Red
+        prd*) hc=$Red
                 ;;
-        *) frame=$Cyan
+        *) hc=$White
 esac
 
 # check for sudo
-#frame=$Cyan;
+# frame=$Cyan;
+frame=$hc;
+
 case $UID in
         0 ) root=$BRed;p=#;P=!!!;;
         * ) root=$White;p=\$;P=;; 
@@ -81,7 +83,7 @@ function git-branch-prompt {
 # old prompt
 #export PS1="\n\[$bblu\] \d \T \[$rst\]\n> \[$wht\]\w\[$rst\]\n\[$root\]\u@\h\[$rst\] $p "
 
-export PS1="\n\[$frame\][\[$root\]\u\[$frame\]@\[$root\]\h\[$frame\]] [\[$root\]\d \T\[$frame\]] [\[$root\]\w\[$frame\]] \$(git-branch-prompt)\n\[$frame\]\[$root\]$p\[$frame\]\[$Colour_Off\] "
+export PS1="\n\[$frame\][\[$root\]\u\[$frame\]@\[$hc\]\h\[$frame\]] [\[$root\]\d \T\[$frame\]] [\[$root\]\w\[$frame\]] \$(git-branch-prompt)\n\[$frame\]\[$root\]$p\[$frame\]\[$Colour_Off\] "
 
 export PROMPT_COMMAND='echo -ne "\033]0;$P $LOGNAME@$HOSTNAME $P\007"'
 
