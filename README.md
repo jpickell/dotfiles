@@ -8,8 +8,8 @@ Brackets and separators as follows:
 - PROD/PRD - Red
 - TEST/TST - Yellow
 - DEV      - Green
-- SAND     - Gray
-- Other    - Cyan
+- SAND     - Cyan
+- Other    - White
 
 >.bash_profile
 
