@@ -45,6 +45,10 @@ case "$UNAME" in
 esac
 
 case "$HOSTNAME" in
+        sand*) frame=$Gray
+                ;;
+        snd*) frame=$Gray
+                ;;
         dev*) frame=$Green
                 ;;
         test*) frame=$Yellow
