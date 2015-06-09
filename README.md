@@ -11,6 +11,9 @@ Brackets and separators as follows:
 - SAND     - Cyan
 - Other    - White
 
+Includes code to show the git branch of the current directory (if it is under git control)
+
+
 >.bash_profile
 
 >.vimrc
