@@ -1,6 +1,6 @@
 *My Dot Files
 
->.bashrc
+*.bashrc*
 
 Bash prompt is now colorized based on environment:
 
@@ -14,15 +14,15 @@ Brackets and separators as follows:
 Includes code to show the git branch of the current directory (if it is under git control)
 
 
->.bash_profile
+*.bash_profile*
 - simple redirect to my .bashrc
 
->.vimrc
+*.vimrc*
 - includes line numbering, colorization, etc.  Nothing too fancy.
 
->.emacs
+*.emacs*
 - an ancient dotfile that needs to be updated.  Mostly here for historical purposes.
 
->.screenrc
+*.screenrc*
 - Simple mode line and a few key bindings
 - soon to be replaced w/tmux.  someday.  maybe.
