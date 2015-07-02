@@ -1,15 +1,16 @@
-UNAME=$(uname)
-
-if [ $(uname) == "Darwin" ]; then
- export PATH=$PATH:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/sfw/bin:/opt/csw/bin:/Users/pickellj/bin:/usr/ccs/bin
-else
- export PATH=$PATH:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/sfw/bin:/opt/csw/bin:/home/pickellj/bin:/usr/ccs/bin
- export MANPATH=$MANPATH:/opt/csw/man:/opt/redhat/rhn/solaris/man
-fi
-
+export UNAME=$(uname)
+export HOSTNAME=$(hostname)
 export EDITOR=vi
 export HISTSIZE=2000;
-HOSTNAME=$(hostname)
+
+if [ $(uname) == "Darwin" ]; then
+        # OSX specific stuff goes here
+        export PATH=$PATH:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/sfw/bin:/opt/csw/bin:/Users/pickellj/bin:/usr/ccs/bin
+else
+        # Linux specific stuff goes here
+        export PATH=$PATH:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/sfw/bin:/opt/csw/bin:/home/pickellj/bin:/usr/ccs/bin
+        export MANPATH=$MANPATH:/usr/man:/opt/csw/man:/opt/redhat/rhn/solaris/man
+fi
 
 if [ -f "/etc/dircolors" ]
 then
