@@ -15,7 +15,7 @@ Brackets and separators as follows:
 
 <img src="http://www.jeffpickell.com/images/bash_prompts.png">
 
-Also ncludes code to show the git branch of the current directory (if it is under git control) and a nifty bit that gets rid of the error messages when git is not installed on a server.
+Also includes code to show the git branch of the current directory (if it is under git control) and a nifty bit that gets rid of the error messages when git is not installed on a server.
 
 
 **.bash_profile**
