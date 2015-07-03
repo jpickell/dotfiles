@@ -1,10 +1,9 @@
 ;;
 ;;; Jeff Pickell's .emacs file
 ;;;
-;;; Author: Jeff Pickell <random@mo.net>
+;;; Author: Jeff Pickell 
 ;;; Keywords: dotfile
 ;;; Version: 1.0, started 19 Sep 2000
-;;; Copyright: (C) 2000 Jeff Pickell
 ;;;
 ;;;
 ;;     This program is free software; you can redistribute it and/or
@@ -22,11 +21,6 @@
 ;;     Software Foundation, Inc., 59 Temple Place - Suite 330, Boston,
 ;;     MA 02111-1307, USA.
 ;;
-;; Latest version should be available at:
-;;    <URL:http://www.xionic.net>
-;; 
-;; Version 1.1, 05.29.01
-;;   added support for bbdb and reorganized appearance
 ;;
 (setq load-path (cons "~/emacs/" load-path))
 ;;
