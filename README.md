@@ -14,7 +14,7 @@ Brackets and separators as follows:
 - Other    - White
 
 <img src="http://www.jeffpickell.com/images/bash_prompts.png" alt="Example of environment specific colorized prompt">
-(FYI -- I added the dashes in the picture to obscure actual server names and although not shown here, if you sudo to a root shell, the user name changes to 'root' and is colorized red.) 
+*(FYI -- I added the dashes in the picture to obscure actual server names and although not shown here, if you sudo to a root shell, the user name changes to 'root' and is colorized red.)*
 
 Also includes code to show the git branch of the current directory (if it is under git control) and a nifty bit that gets rid of the error messages when git is not installed on a server.
 
