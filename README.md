@@ -34,3 +34,8 @@ Also includes code to show the git branch of the current directory (if it is und
 ---
 - Simple mode line and a few key bindings
 - soon to be replaced w/tmux.  someday.  maybe.
+
+========
+For more dotfiles head over to <a href="https://dotfiles.github.io">https://dotfiles.github.io</a>
+
+
