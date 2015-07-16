@@ -19,7 +19,7 @@ case "$UNAME" in
                 export MANPATH=$MANPATH:/usr/man:/opt/csw/man:/opt/redhat/rhn/solaris/man
                 ;;
         SunOS)  alias vi="vi"
-                export TERM="vt100"
+                export TERM="xterm"
                 ;;
         Darwin) alias vi="mvim"
                 alias va="mvim --remote-tab"
