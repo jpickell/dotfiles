@@ -97,7 +97,7 @@ function git-branch-name {
 }
 
 function git-branch-prompt {
-	branch=`git-branch-name`
+	export branch=`git-branch-name`
         if [ $branch ]; then printf "\n[$Yellow%s$frame]\n" $branch; fi
 }
 
