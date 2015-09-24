@@ -1,4 +1,4 @@
-#My Dot Files
+#My Dot Files for Mac and Linux
 
 My "dotfile" collection.   Lots of prompt and environment customization for Bash and Vim along with a couple of legacy dotfiles that I keep around for historical reasons.
 
@@ -25,6 +25,7 @@ Also includes code to show the git branch of the current directory (if it is und
 **.vimrc**
 ---
 - includes line numbering, colorization, etc.  Nothing too fancy.
+(getting fancier w/Goyo and Xmark!)
 
 **.emacs**
 ---
