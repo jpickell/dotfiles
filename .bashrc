@@ -85,11 +85,6 @@ esac
 # frame=$Cyan;
 frame=$hc;
 
-case $UID in
-        0 ) root=$BRed;p=#;P=!!!;;
-        * ) root=$White;p=\$;P=;; 
-esac
-
 if [ -f "/usr/bin/git" ]; then 
 
 function git-branch-name {
@@ -97,7 +92,7 @@ function git-branch-name {
 }
 
 function git-branch-prompt {
-	export branch=`git-branch-name`
+	branch=`git-branch-name`
         if [ $branch ]; then printf "\n[$Yellow%s$frame]\n" $branch; fi
 }
 
@@ -106,6 +101,19 @@ else
         function git-branch-prompt { printf ""; }
 fi
 
+case $UID in
+        0 ) root=$BRed;
+            p=\#;
+            P=!!!;
+            export PS1="\n\[$frame\][\[$root\]\u\[$frame\]@\[$hc\]\h\[$frame\]] [\[$root\]\d \T\[$frame\]] [\[$root\]\w\[$frame\]] $p\[$frame\]\[$Colour_Off\] "
+            ;;
 
-export PS1="\n\[$frame\][\[$root\]\u\[$frame\]@\[$hc\]\h\[$frame\]] [\[$root\]\d \T\[$frame\]] [\[$root\]\w\[$frame\]] \$(git-branch-prompt)\n\[$frame\]\[$root\]$p\[$frame\]\[$Colour_Off\] "
+        * ) root=$White;
+            p=\$;
+            P=;
+            export PS1="\n\[$frame\][\[$root\]\u\[$frame\]@\[$hc\]\h\[$frame\]] [\[$root\]\d \T\[$frame\]] [\[$root\]\w\[$frame\]] \$(git-branch-prompt)\n\[$frame\]\[$root\]$p\[$frame\]\[$Colour_Off\] "
+            ;;
+
+esac
+
 export PROMPT_COMMAND='echo -ne "\033]0;$P $LOGNAME@$HOSTNAME $P\007"'
