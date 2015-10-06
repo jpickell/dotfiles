@@ -29,6 +29,8 @@ Also includes code to show the git branch of the current directory (if it is und
    1. Mapped &lt;Leader&gt; b to enable on the fly switching from dark to light backgrounds.
    2. Mapped &lt;Leader&gt; z to toggle "Zen Mode" - a super simple distraction free full screen mode. 
 
+Uses the zen.vim colorscheme located in ~/.vim/colors
+
 
 **.emacs**
 ---
