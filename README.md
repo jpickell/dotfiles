@@ -26,8 +26,8 @@ Also includes code to show the git branch of the current directory (if it is und
 **.gvimrc**
 ---
 - Added a couple of nice features: 
-   1. Mapped <Leader> b to enable on the fly switching from dark to light backgrounds.
-   2. Mapped <Leader> z to toggle "Zen Mode" - a super simple distraction free full screen mode. 
+   1. Mapped &lt;Leader&gt; b to enable on the fly switching from dark to light backgrounds.
+   2. Mapped &lt;Leader&gt; z to toggle "Zen Mode" - a super simple distraction free full screen mode. 
 
 
 **.emacs**
