@@ -8,9 +8,7 @@ if ( ! -e "/usr/bin/git" ){ die "$!" }
 chomp($branch=`git symbolic-ref HEAD|cut -f3 -d'/'`);
 @repo=split(/[\@\.:\/+]/, `git config --get remote.origin.url`);
 
-foreach $r (@repo){
-	print"$r\n";
-}
+#foreach $r (@repo){ print"$r\n"; }
 
 if ($repo[0] == "git"){
 	$remote = $repo[1];
