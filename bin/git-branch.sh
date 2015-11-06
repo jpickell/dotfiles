@@ -8,10 +8,14 @@ else
         function git-branch-name { GIT="Not Installed"; }
         function git-branch-prompt { printf ""; }
 fi
+function git-repo {
+        git config --get remote.origin.url
+}
 
 function git-branch-prompt {
 	branch=`git-branch-name`
-        if [ $branch ]; then printf "\n[$Yellow%s$frame]\n" $branch; fi
+        repo=`git-repo`
+        if [ $branch ]; then printf "\n[$Yellow%s - %s$frame]\n" $repo $branch; fi
 }
 
 echo $(git-branch-prompt)
