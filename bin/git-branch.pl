@@ -6,14 +6,18 @@
 if ( ! -e "/usr/bin/git" ){ die "$!" }
 
 chomp($branch=`git symbolic-ref HEAD|cut -f3 -d'/'`);
-@repo=split(/[@\.:\/+]/, `git config --get remote.origin.url`);
+@repo=split(/[\@\.:\/+]/, `git config --get remote.origin.url`);
+
+foreach $r (@repo){
+	print"$r\n";
+}
 
 if ($repo[0] == "git"){
 	$remote = $repo[1];
 }
 
-if ($repo[0] == "https"){
-	$remote = $repo[2];
+if ($repo[0] =~  m/http/){
+	$remote = $repo[3];
 }
 
 print ("\n[$Frame$remote - $branch]\n");
