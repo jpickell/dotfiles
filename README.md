@@ -6,6 +6,8 @@ My "dotfile" collection.   Lots of prompt and environment customization for Bash
 ---
 Bash prompt is now colorized based on environment.   At my current place of employment, servers conform to a somewhat simple naming convention in that all names must start with the environment that they operate in.  This allows me to color code portions of my prompt based on my environment.  
 
+The code for adding the git branch into the prompt has been moved out of .bashrc and into bin/git-branch.sh  This allows for the command to work even after sudoing to a root shell.  
+
 Brackets and separators as follows:
 - PROD/PRD - Red
 - TEST/TST - Yellow

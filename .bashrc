@@ -42,13 +42,7 @@ alias ss="sudo -s"
 alias lock="open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
 alias synergy="/Applications/Synergy.app/Contents/MacOS/synergyc pickellj.wwt.com"
 alias webshare='python -m SimpleHTTPServer 8888'
-# git aliases
-alias ga="git add ."
-alias gs="git status"
-alias gc="git commit -m"
-alias gp="git push"
 alias wwt="ssh pickellj@linuxadmin2"
-alias mars="ssh jkp@mars.vxrs.com"
 
 source ~/.colors 
 rst='\e[0m'    # Text Reset
@@ -85,33 +79,17 @@ esac
 # frame=$Cyan;
 frame=$hc;
 
-if [ -f "/usr/bin/git" ]; then 
-
-function git-branch-name {
-	git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3
-}
-
-function git-branch-prompt {
-	branch=`git-branch-name`
-        if [ $branch ]; then printf "\n[$Yellow%s$frame]\n" $branch; fi
-}
-
-else
-        function git-branch-name { GIT="Not Installed"; }
-        function git-branch-prompt { printf ""; }
-fi
-
 case $UID in
-        0 ) root=$BRed;
+        0 ) root=$Red;
             p=\#;
             P=!!!;
-            export PS1="\n\[$frame\][\[$root\]\u\[$frame\]@\[$hc\]\h\[$frame\]] [\[$root\]\d \T\[$frame\]] [\[$root\]\w\[$frame\]] $p\[$frame\]\[$Colour_Off\] "
+            export PS1="\n\[$frame\][\[$root\]\u\[$frame\] @ \[$hc\]\h\[$frame\]] [\[$root\]\d \T\[$frame\]] [\[$root\]\w\[$frame\]]\n\$(git-branch.sh)\[$Red\]$p\[$frame\]\[$Colour_Off\] "
             ;;
 
         * ) root=$White;
             p=\$;
             P=;
-            export PS1="\n\[$frame\][\[$root\]\u\[$frame\]@\[$hc\]\h\[$frame\]] [\[$root\]\d \T\[$frame\]] [\[$root\]\w\[$frame\]] \$(git-branch-prompt)\n\[$frame\]\[$root\]$p\[$frame\]\[$Colour_Off\] "
+            export PS1="\n\[$frame\][\[$root\]\u\[$frame\] @ \[$hc\]\h\[$frame\]] [\[$root\]\d \T\[$frame\]] [\[$root\]\w\[$frame\]]\n\$(git-branch.sh)\[$frame\]\[$root\]$p\[$frame\]\[$Colour_Off\] "
             ;;
 
 esac
