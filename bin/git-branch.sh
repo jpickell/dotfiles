@@ -9,7 +9,7 @@ else
         function git-branch-prompt { printf ""; }
 fi
 function git-repo {
-        git config --get remote.origin.url
+        git config --get remote.origin.url 2>/dev/null |cut -d":" -f 1
 }
 
 function git-branch-prompt {
