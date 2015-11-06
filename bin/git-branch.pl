@@ -18,5 +18,5 @@ if ($repo[0] =~  m/http/){
 	$remote = $repo[3];
 }
 
-print ("\n[$Frame$remote - $branch]\n");
+print ("[$Frame$remote - $branch]\n");
 
