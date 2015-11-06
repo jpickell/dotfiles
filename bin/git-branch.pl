@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 # [git@prodgithub01.wwt.com:pickellj/dots.git - refs/heads/master]
+# https://prodgithub01.wwt.com/pickellj/dots.git
 
 if ( ! -e "/usr/bin/git" ){ die "$!" }
 
@@ -12,7 +13,7 @@ if ($repo[0] == "git"){
 }
 
 if ($repo[0] == "https"){
-	$remote = $repo[1];
+	$remote = $repo[2];
 }
 
 print ("\n[$Frame$remote - $branch]\n");
