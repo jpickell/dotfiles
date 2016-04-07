@@ -1,26 +1,9 @@
 export UNAME=$(uname)
 export HOSTNAME=$(hostname)
-export EDITOR=vi
-export HISTSIZE=2000;
-
-# Make MAN pages look better, with some color and formatting.
-export LESS_TERMCAP_mb=$'\e[01;31m'
-export LESS_TERMCAP_md=$'\e[01;38;5;74m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[38;5;246m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[04;38;5;146m'
-
-
-if [ $(uname) == "Darwin" ]; then
-        # OSX specific stuff goes here
-        export PATH=$PATH:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/sfw/bin:/opt/csw/bin:/Users/pickellj/bin:/usr/ccs/bin
-else
-        # Linux specific stuff goes here
-        export PATH=$PATH:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/sfw/bin:/opt/csw/bin:/home/pickellj/bin:/usr/ccs/bin
-        export MANPATH=$MANPATH:/usr/man:/opt/csw/man:/opt/redhat/rhn/solaris/man
-fi
+export HISTSIZE=2000
+export TERM=xterm-color
+export PATH=$PATH:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$HOME/bin
+export MANPATH=$MANPATH:/usr/man
 
 if [ -f "/etc/dircolors" ]
 then
@@ -30,53 +13,64 @@ then
     eval $(dircolors -b $HOME/.dircolors)
   fi
 fi
-export CLICOLOR=1
 
 # Keyboard aliases
 alias lsd="ls -al|grep ^d|grep -v '\.'"
 alias ld="ls -al|grep drw"
 alias ll="ls -al"
-alias cl="clear"
-alias m="more"
-alias ss="sudo -s"
-alias lock="open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
-alias synergy="/Applications/Synergy.app/Contents/MacOS/synergyc pickellj.wwt.com"
-alias webshare='python -m SimpleHTTPServer 8888'
-alias wwt="ssh pickellj@linuxadmin2"
+alias c="clear"
+alias more="less"
+alias l="less"
+alias s="sudo -s"
+alias webshare="python -m SimpleHTTPServer 8888"
+alias wwt="ssh wwt"
 
 source ~/.colors 
 rst='\e[0m'    # Text Reset
 
 case "$UNAME" in
-        Linux) alias vi="vim"
-                ;;
-        SunOS) alias vi="vi"
-                ;;
-        Darwin) alias vi="mvim"
-                alias va="mvim --remote-tab"
-                ;;
+   Linux) 
+	alias vi="vim"
+	export EDITOR=vim
+        ;;
+   SunOS) 
+	alias vi="vi"
+	export EDITOR=vi
+	export TERM=xterm
+	export PATH=$PATH::/usr/sfw/bin:/opt/csw/bin
+	export MANPATH=$MANPATH:/opt/csw/man:/opt/redhat/rhn/solaris/man
+        ;;
+   Darwin) 
+	alias vi="mvim"
+        alias va="mvim --remote-tab"
+	alias o="open"
+	alias synergy="/Applications/Synergy.app/Contents/MacOS/synergyc pickellj.wwt.com"
+	alias z="open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
+	alias gnote="vi -c Geeknote"
+	export EDITOR=mvim
+	export CLICOLOR=1
+	export GOPATH=$HOME/bin/gocode
+        ;;
 esac
+
+n() { 
+	$EDITOR ~/Notes/"$*".txt 
+}
+
+nls() { 
+	ls -c ~/Notes/ | grep "$*" 
+}
 
 case "$HOSTNAME" in
-        sand*) hc=$Cyan
-                ;;
-        snd*) hc=$Cyan
-                ;;
-        dev*) hc=$Green
-                ;;
-        test*) hc=$Yellow
-                ;;
-        tst*) hc=$Yellow
-                ;;
-        prod*) hc=$Red
-                ;;
-        prd*) hc=$Red
-                ;;
+        sand*) hc=$Cyan;;
+        snd*) hc=$Cyan;;
+        dev*) hc=$Green;;
+        test*) hc=$Yellow;;
+        tst*) hc=$Yellow;;
+        prod*) hc=$Red;;
+        prd*) hc=$Red;;
         *) hc=$White
 esac
-
-# check for sudo
-# frame=$Cyan;
 frame=$hc;
 
 case $UID in
@@ -94,4 +88,4 @@ case $UID in
 
 esac
 
-export PROMPT_COMMAND='echo -ne "\033]0;$P $LOGNAME@$HOSTNAME $P\007"'
+export PROMPT_COMMAND='echo -ne "\033]0;$P $LOGNAME@$HOSTNAME $P\007"';
