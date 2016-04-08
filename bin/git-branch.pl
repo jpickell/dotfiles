@@ -9,6 +9,7 @@ if ( ! -d ".git"){exit;}
 chomp($branch=`git symbolic-ref HEAD|cut -f3 -d'/'`);
 
 @repo=split(/[\@\.:\/+]/, `git config --get remote.origin.url`);
+@repo=split(/[\@:\/+]/, `git config --get remote.origin.url`);
 
 #foreach $r (@repo){ print"$r\n"; }
 
