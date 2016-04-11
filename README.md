@@ -1,16 +1,15 @@
-#My Dot Files
+#My Dotfiles
 
 My "dotfile" collection.   Lots of prompt and environment customization for Bash and Vim along with a couple of legacy dotfiles that I keep around for historical reasons.
 
-.bash_profile
-.bashrc
-.colors
-.emacs
-.git
-.gvimrc
-.screenrc
-.vim
-
+-.bash_profile
+-.bashrc
+-.colors
+-.emacs
+-.git
+-.gvimrc
+-.screenrc
+-.vim
 
 **.bashrc**
 ---
