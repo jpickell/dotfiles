@@ -1,15 +1,15 @@
-#My Dotfiles
+#<a name="top">My Dotfiles</a>
 
 My "dotfile" collection.   Lots of prompt and environment customization for Bash and Vim along with a couple of legacy dotfiles that I keep around for historical reasons.
 
-- [.bash_profile](#.bashrc)
-- .bashrc
-- .colors
-- .emacs
-- .git
-- .gvimrc
-- .screenrc
-- .vim
+- [.bashrc](#.bashrc)
+- [.bash_profile](#.bash_profile)
+- [.colors](#.colors)
+- [.emacs](#.emacs)
+- [.git](#.git)
+- [.gvimrc](#.gvimrc)
+- [.screenrc](#.screenrc)
+- [.vim](#.vim)
 
 **<a name=".bashrc">.bashrc</a>**
 ---
@@ -34,11 +34,15 @@ OS Specific sections for some aliases and environment variables:
 -SunOS
 -Darwin
 
-**.bash_profile**
+[-top-](#top)
+
+**<a name=".bash_profile">.bash_profile</a>**
 ---
 - simple redirect to my .bashrc
 
-**.gvimrc**
+[-top-](#top)
+
+**<a name=".gvimrc">.gvimrc</a>**
 ---
 - Added a couple of nice features: 
    1. Mapped &lt;Leader&gt; b to enable on the fly switching from dark to light backgrounds.
@@ -46,15 +50,20 @@ OS Specific sections for some aliases and environment variables:
 
 Uses the zen.vim colorscheme located in ~/.vim/colors
 
+[-top-](#top)
 
-**.emacs**
+**<a name=".emacs">.emacs</a>**
 ---
 - an ancient dotfile that needs to be updated.  Mostly here for historical purposes.
 
-**.screenrc**  
+[-top-](#top)
+
+**<a name=".screenrc">.screenrc</a>**  
 ---
 - Simple mode line and a few key bindings
 - soon to be replaced w/tmux.  someday.  maybe.
+
+[-top-](#top)
 
 ========
 For more dotfiles head over to <a href="https://dotfiles.github.io">https://dotfiles.github.io</a>
