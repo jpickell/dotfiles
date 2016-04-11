@@ -52,6 +52,12 @@ Uses the zen.vim colorscheme located in ~/.vim/colors
 
 [-top-](#top)
 
+##<a name=".vim">.vim</a>**
+---
+Various vim plugins 
+
+[-top-](#top)
+
 **<a name=".emacs">.emacs</a>**
 ---
 - an ancient dotfile that needs to be updated.  Mostly here for historical purposes.
