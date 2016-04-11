@@ -33,9 +33,9 @@ Brackets and separators as follows:
 - Perl snippet to show the git branch of the current directory (if it is under git control) and a nifty bit that gets rid of the error messages when git is not installed on a server.
 
 OS Specific sections for some aliases and environment variables:
--Linux
--SunOS
--Darwin
+- Linux
+- SunOS
+- Darwin
 
 [-top-](#top)
 
