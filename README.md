@@ -15,7 +15,8 @@ My "dotfile" collection.   Lots of prompt and environment customization for Bash
 ---
 
 **<a name=".bashrc">.bashrc</a>**
-Bash prompt is colorized based on environment.   At my current place of employment, servers conform to a somewhat simple naming convention in that all names must start with the environment that they operate in.  This allows me to color code portions of my prompt based on my environment.  
+
+Bash prompt is colorized based on environment.  Servers in my current environment conform to a somewhat simple naming convention in that all names must start with the environment that they operate in.  This allows me to color code portions of my prompt based on my environment.  
 
 Brackets and separators as follows:
 - PROD/PRD - Red
@@ -29,7 +30,7 @@ Brackets and separators as follows:
 *(FYI -- I added the dashes in the picture to obscure actual server names and although not shown here, if you sudo to a root shell, the user name changes to 'root' and is colorized red.)*
 
 **bin/git-branch.pl**
-Perl snippet to show the git branch of the current directory (if it is under git control) and a nifty bit that gets rid of the error messages when git is not installed on a server.
+- Perl snippet to show the git branch of the current directory (if it is under git control) and a nifty bit that gets rid of the error messages when git is not installed on a server.
 
 OS Specific sections for some aliases and environment variables:
 -Linux
