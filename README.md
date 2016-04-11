@@ -59,7 +59,7 @@ Uses the zen.vim colorscheme located in ~/.vim/colors
 ---
 
 **<a name=".vim">.vim</a>**
-Various vim plugins 
+-Various vim plugins 
 
 [-top-](#top)
 
