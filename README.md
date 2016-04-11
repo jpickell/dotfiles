@@ -1,4 +1,5 @@
 #<a name="top">My Dotfiles</a>
+---
 
 My "dotfile" collection.   Lots of prompt and environment customization for Bash and Vim along with a couple of legacy dotfiles that I keep around for historical reasons.
 
@@ -11,8 +12,9 @@ My "dotfile" collection.   Lots of prompt and environment customization for Bash
 - [.screenrc](#.screenrc)
 - [.vim](#.vim)
 
-**<a name=".bashrc">.bashrc</a>**
 ---
+
+**<a name=".bashrc">.bashrc</a>**
 Bash prompt is colorized based on environment.   At my current place of employment, servers conform to a somewhat simple naming convention in that all names must start with the environment that they operate in.  This allows me to color code portions of my prompt based on my environment.  
 
 Brackets and separators as follows:
@@ -35,12 +37,13 @@ OS Specific sections for some aliases and environment variables:
 -Darwin
 
 [-top-](#top)
+---
 
 **<a name=".bash_profile">.bash_profile</a>**
----
 - simple redirect to my .bashrc
 
 [-top-](#top)
+---
 
 **<a name=".gvimrc">.gvimrc</a>**
 ---
@@ -51,27 +54,30 @@ OS Specific sections for some aliases and environment variables:
 Uses the zen.vim colorscheme located in ~/.vim/colors
 
 [-top-](#top)
+---
 
 ##<a name=".vim">.vim</a>**
----
 Various vim plugins 
+---
 
 [-top-](#top)
 
 **<a name=".emacs">.emacs</a>**
 ---
 - an ancient dotfile that needs to be updated.  Mostly here for historical purposes.
+---
 
 [-top-](#top)
 
 **<a name=".screenrc">.screenrc</a>**  
----
 - Simple mode line and a few key bindings
 - soon to be replaced w/tmux.  someday.  maybe.
 
 [-top-](#top)
+---
 
 ========
+
 For more dotfiles head over to <a href="https://dotfiles.github.io">https://dotfiles.github.io</a>
 
 
