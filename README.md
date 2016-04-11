@@ -14,7 +14,7 @@ My "dotfile" collection.   Lots of prompt and environment customization for Bash
 
 **.bashrc**
 ---
-Bash prompt is now colorized based on environment.   At my current place of employment, servers conform to a somewhat simple naming convention in that all names must start with the environment that they operate in.  This allows me to color code portions of my prompt based on my environment.  
+Bash prompt is colorized based on environment.   At my current place of employment, servers conform to a somewhat simple naming convention in that all names must start with the environment that they operate in.  This allows me to color code portions of my prompt based on my environment.  
 
 Brackets and separators as follows:
 - PROD/PRD - Red
@@ -29,6 +29,10 @@ Brackets and separators as follows:
 
 Also includes code to show the git branch of the current directory (if it is under git control) and a nifty bit that gets rid of the error messages when git is not installed on a server.
 
+OS Specific sections for some aliases and environment variables:
+-Linux
+-SunOS
+-Darwin
 
 **.bash_profile**
 ---
