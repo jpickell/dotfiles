@@ -37,16 +37,17 @@ OS Specific sections for some aliases and environment variables:
 -Darwin
 
 [-top-](#top)
+
 ---
 
 **<a name=".bash_profile">.bash_profile</a>**
 - simple redirect to my .bashrc
 
 [-top-](#top)
+
 ---
 
 **<a name=".gvimrc">.gvimrc</a>**
----
 - Added a couple of nice features: 
    1. Mapped &lt;Leader&gt; b to enable on the fly switching from dark to light backgrounds.
    2. Mapped &lt;Leader&gt; z to toggle "Zen Mode" - a super simple distraction free full screen mode. 
@@ -54,17 +55,19 @@ OS Specific sections for some aliases and environment variables:
 Uses the zen.vim colorscheme located in ~/.vim/colors
 
 [-top-](#top)
+
 ---
 
-##<a name=".vim">.vim</a>**
+**<a name=".vim">.vim</a>**
 Various vim plugins 
+
 ---
 
 [-top-](#top)
 
 **<a name=".emacs">.emacs</a>**
----
 - an ancient dotfile that needs to be updated.  Mostly here for historical purposes.
+
 ---
 
 [-top-](#top)
@@ -74,10 +77,11 @@ Various vim plugins
 - soon to be replaced w/tmux.  someday.  maybe.
 
 [-top-](#top)
+
 ---
 
-========
-
 For more dotfiles head over to <a href="https://dotfiles.github.io">https://dotfiles.github.io</a>
+
+---
 
 
