@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/pickellj/Documents/Wifi-Enabled Cell Phones.pages'
+let g:netrw_dirhist_2='/Users/pickellj/Workspace/Exceed/public_html/vehicles'
+let g:netrw_dirhist_3='/Users/pickellj/.vim'
+let g:netrw_dirhist_4='/Users/pickellj/Workspace/SomaCLI'
+let g:netrw_dirhist_5='/Users/pickellj/Workspace/WWT/wwt-rhel_conf/manifests'
