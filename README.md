@@ -2,6 +2,16 @@
 
 My "dotfile" collection.   Lots of prompt and environment customization for Bash and Vim along with a couple of legacy dotfiles that I keep around for historical reasons.
 
+.bash_profile
+.bashrc
+.colors
+.emacs
+.git
+.gvimrc
+.screenrc
+.vim
+
+
 **.bashrc**
 ---
 Bash prompt is colorized based on environment.  At my current place of employment, servers conform to a somewhat simple naming convention in that all names must start with the environment that they operate in.  This allows me to color code portions of my prompt based on my environment.  
