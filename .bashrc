@@ -1,3 +1,10 @@
+#--------------------------------------#
+# .bashrc 
+# 
+# https://github.com/jpickell/dotfiles
+#
+#--------------------------------------#
+
 export UNAME=$(uname)
 export HOSTNAME=$(hostname)
 export HISTSIZE=2000
