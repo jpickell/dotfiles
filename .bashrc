@@ -1,5 +1,5 @@
 #--------------------------------------#
-# .bashrc 
+# $HOME/.bashrc 
 # 
 # https://github.com/jpickell/dotfiles
 #
