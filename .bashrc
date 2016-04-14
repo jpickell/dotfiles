@@ -1,3 +1,10 @@
+#--------------------------------------#
+# .bashrc 
+# 
+# https://github.com/jpickell/dotfiles
+#
+#--------------------------------------#
+
 export UNAME=$(uname)
 export HOSTNAME=$(hostname)
 export HISTSIZE=2000
@@ -19,6 +26,7 @@ alias lsd="ls -al|grep ^d|grep -v '\.'"
 alias ld="ls -al|grep drw"
 alias ll="ls -al"
 alias c="clear"
+alias h="history"
 alias more="less"
 alias l="less"
 alias s="sudo -s"
