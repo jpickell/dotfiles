@@ -2,6 +2,7 @@
 # .bashrc 
 # 
 # https://github.com/jpickell/dotfiles
+# https://gitlab.com/jpickell/dotfiles
 #
 #--------------------------------------#
 
