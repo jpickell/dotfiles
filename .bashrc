@@ -29,7 +29,7 @@ alias c="clear"
 alias h="history"
 alias more="less"
 alias l="less"
-alias s="sudo -s"
+alias s="sudo -Es"
 alias webshare="python -m SimpleHTTPServer 8888"
 alias wwt="ssh wwt"
 
