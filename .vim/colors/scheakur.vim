@@ -1,17 +1,11 @@
-<<<<<<< HEAD
-# This colorscheme is based on 'scheakur' and only very slightly modified
-# The original can be found at https://github.com/scheakur/vim-scheakur
-#
-=======
 " This file is built by ../source.vim.
 " Do not modify this file directly.
->>>>>>> d1dbc229a0dce75fcb565afd4133f6e865d43948
 highlight clear
 if exists('syntax_on')
 	syntax reset
 endif
 
-let g:colors_name = 'zen'
+let g:colors_name = 'scheakur'
 
 if &background == 'light'
 	hi Normal guifg=#2e2e2e guibg=#f0f0e5 gui=none ctermfg=234 ctermbg=255 cterm=none
