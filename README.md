@@ -86,4 +86,4 @@ For more dotfiles head over to <a href="https://dotfiles.github.io">https://dotf
 ---
 
 
-Last Updated: Thu Apr 14 21:32:37 CDT 2016
+Last Updated: Thu Apr 14 21:33:35 CDT 2016
