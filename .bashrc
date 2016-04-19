@@ -32,8 +32,8 @@ alias more="less"
 alias l="less"
 alias s="sudo -Es"
 alias webshare="python -m SimpleHTTPServer 8888"
-alias wwt="ssh wwt"
-alias wwt="ssh home"
+alias w="ssh w"
+alias h="ssh h"
 
 source ~/.colors 
 rst='\e[0m'    # Text Reset
