@@ -2,6 +2,7 @@
 # .bashrc 
 # 
 # https://github.com/jpickell/dotfiles
+# https://gitlab.com/jpickell/dotfiles
 #
 #--------------------------------------#
 
@@ -32,6 +33,7 @@ alias l="less"
 alias s="sudo -Es"
 alias webshare="python -m SimpleHTTPServer 8888"
 alias wwt="ssh wwt"
+alias wwt="ssh home"
 
 source ~/.colors 
 rst='\e[0m'    # Text Reset
