@@ -46,8 +46,8 @@
 ;;;  (require 'htmlize)
 ;;;  (require 'recentf)
 ;;;  (require 'battery-netbsd)
-;;;  ;(require 'erc)
-(require 'epubmode)
+;;;  (require 'erc)
+;;;  (require 'epubmode)
 ;;;  (display-battery)
 ;;;  (setq bkup-backup-directory-info
 ;;;     '(( t "~/emacs/.backups/" full-path prepend-name search-upward)))
@@ -86,15 +86,15 @@
 (setq inhibit-startup-echo-area-message "pickellj")
 (setq default-directory (concat (getenv "HOME") "/"))
 
-(setq default-frame-alist '((width . 120)
-                            (height . 160)
-                            (top . 0)
-                            (left . 0)
-                            (tool-bar-lines . 0)))
+;;(setq default-frame-alist '((width . 120)
+;;                            (height . 160)
+;;                            (top . 0)
+;;                            (left . 0)
+;;                            (tool-bar-lines . 0)))
 
 
-(setq-default left-margin-width 15 right-margin-width 15) ; Define new widths.
- (set-window-buffer nil (current-buffer)) ; Use them now.
+;;(setq-default left-margin-width 15 right-margin-width 15) ; Define new widths.
+;; (set-window-buffer nil (current-buffer)) ; Use them now.
 
 (scroll-bar-mode 0)
 (tool-bar-mode 0)
@@ -112,16 +112,16 @@
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t) 
 
-(eval-when-compile (require 'cl))
- (defun toggle-transparency ()
-   (interactive)
-   (if (/=
-        (cadr (frame-parameter nil 'alpha))
-        100)
-       (set-frame-parameter nil 'alpha '(100 100))
-     (set-frame-parameter nil 'alpha '(85 50))))
+;;(eval-when-compile (require 'cl))
+;; (defun toggle-transparency ()
+;;   (interactive)
+;;   (if (/=
+;;        (cadr (frame-parameter nil 'alpha))
+;;        100)
+;;       (set-frame-parameter nil 'alpha '(100 100))
+;;    (set-frame-parameter nil 'alpha '(85 50))))
 
- (global-set-key (kbd "C-c t") 'toggle-transparency)
+;; (global-set-key (kbd "C-c t") 'toggle-transparency)
 
  (setq browse-url-browser-function 'w3m-browse-url)
  (autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
