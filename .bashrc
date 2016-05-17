@@ -43,6 +43,7 @@ case "$UNAME" in
         ;;
    SunOS) 
 	alias vi="vi"
+        alias s="sudo -E -s"
 	export EDITOR=vi
 	export TERM=xterm
 	export PATH=$PATH::/usr/sfw/bin:/opt/csw/bin
