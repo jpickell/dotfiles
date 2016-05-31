@@ -40,6 +40,8 @@ case "$UNAME" in
    Linux) 
 	alias vi="vim"
 	export EDITOR=vim
+	# Added logging per https://spin.atomicobject.com/2016/05/28/log-bash-history/
+	export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log; fi; echo -ne "\033]0;$P $LOGNAME@$HOSTNAME $P\007"'
         ;;
    SunOS) 
 	alias vi="vi"
@@ -48,6 +50,7 @@ case "$UNAME" in
 	export TERM=xterm
 	export PATH=$PATH::/usr/sfw/bin:/opt/csw/bin
 	export MANPATH=$MANPATH:/opt/csw/man:/opt/redhat/rhn/solaris/man
+	export PROMPT_COMMAND='echo -ne "\033]0;$P $LOGNAME@$HOSTNAME $P\007"';
         ;;
    Darwin) 
 	alias o="open"
@@ -63,6 +66,8 @@ case "$UNAME" in
 	export EDITOR=mvim
 	export CLICOLOR=1
 	export GOPATH=$HOME/bin/gocode
+	# Added logging per https://spin.atomicobject.com/2016/05/28/log-bash-history/
+	export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log; fi; echo -ne "\033]0;$P $LOGNAME@$HOSTNAME $P\007"'
         ;;
 esac
 
@@ -100,9 +105,3 @@ case $UID in
             ;;
 
 esac
-
-# Added logging per https://spin.atomicobject.com/2016/05/28/log-bash-history/
-#export PROMPT_COMMAND='echo -ne "\033]0;$P $LOGNAME@$HOSTNAME $P\007"';
-#
-export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log; fi; echo -ne "\033]0;$P $LOGNAME@$HOSTNAME $P\007"'
-
