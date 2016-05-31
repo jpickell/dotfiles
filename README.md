@@ -37,6 +37,10 @@ OS Specific sections for some aliases and environment variables:
 - SunOS
 - Darwin
 
+
+Added command logging to the PROMPT_COMMAND per https://spin.atomicobject.com/2016/05/28/log-bash-history/
+
+
 [-top-](#top)
 
 ---
