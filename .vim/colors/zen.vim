@@ -1,11 +1,5 @@
-<<<<<<< HEAD
-# This colorscheme is based on 'scheakur' and only very slightly modified
-# The original can be found at https://github.com/scheakur/vim-scheakur
-#
-=======
 " This file is built by ../source.vim.
 " Do not modify this file directly.
->>>>>>> d1dbc229a0dce75fcb565afd4133f6e865d43948
 highlight clear
 if exists('syntax_on')
 	syntax reset
@@ -31,13 +25,14 @@ if &background == 'light'
 	hi Directory guifg=#1177dd ctermfg=25
 	hi Error guifg=#d1160b guibg=#ffe3e5 ctermfg=124 ctermbg=223
 	hi ErrorMsg guifg=#d1160b guibg=#ffe3e5 ctermfg=124 ctermbg=223
-	hi FoldColumn guifg=#04530d guibg=#d0ead0 ctermfg=22 ctermbg=151
-	hi Folded guifg=#04530d guibg=#d0ead0 ctermfg=22 ctermbg=151
+	hi FoldColumn guifg=#04530d guibg=#f0f0e5 ctermfg=234 ctermbg=255 cterm=none
+	hi Folded guifg=#04530d guibg=#d0ead0 ctermfg=22 ctermbg=255
 	hi Function guifg=#cb1265 ctermfg=125
 	hi Identifier guifg=#1a5991 ctermfg=24
 	hi Ignore guifg=#666666 ctermfg=240
 	hi IncSearch guifg=#2e2e2e guibg=#f4b3c2 gui=none ctermfg=234 ctermbg=218
-	hi LineNr guifg=#567686 guibg=#e2e2d0 ctermfg=236 ctermbg=145
+	" hi LineNr guifg=#567686 guibg=#e2e2d0 ctermfg=236 ctermbg=145
+	hi LineNr guifg=#567686 guibg=#f0f0e5 ctermfg=234 ctermbg=218
 	hi MatchParen guifg=#0e8ed3 guibg=#dbf2ff ctermfg=31 ctermbg=152
 	hi ModeMsg guifg=#337ca3 ctermfg=24
 	hi MoreMsg guifg=#1e7b3d ctermfg=22
@@ -92,13 +87,14 @@ else
 	hi Directory guifg=#6aaaea ctermfg=68
 	hi Error guifg=#ff8485 guibg=#121713 ctermfg=174 ctermbg=234
 	hi ErrorMsg guifg=#ff8485 guibg=#121713 ctermfg=174 ctermbg=234
-	hi FoldColumn guifg=#a0cab0 guibg=#303a3b ctermfg=109 ctermbg=236
-	hi Folded guifg=#a0cab0 guibg=#303a3b ctermfg=109 ctermbg=236
+	hi FoldColumn guifg=#ff8485 guibg=#121713 ctermfg=174 ctermbg=234
+	hi Folded guifg=#a0cab0 guibg=#303a3b ctermfg=109 ctermbg=255
 	hi Function guifg=#d789c8 ctermfg=168
 	hi Identifier guifg=#91a8a5 ctermfg=102
 	hi Ignore guifg=#666666 ctermfg=240
 	hi IncSearch guifg=#dadad5 guibg=#d51487 gui=none ctermfg=251 ctermbg=162
-	hi LineNr guifg=#7c8884 guibg=#132423 ctermfg=66 ctermbg=234
+	" hi LineNr guifg=#7c8884 guibg=#132423 ctermfg=66 ctermbg=234
+	hi LineNr guifg=#dadad5 guibg=#121713 ctermfg=255 ctermbg=234
 	hi MatchParen guifg=#dadad5 guibg=#088b8c ctermfg=251 ctermbg=30
 	hi ModeMsg guifg=#6badd1 ctermfg=67
 	hi MoreMsg guifg=#add581 ctermfg=108

@@ -9,11 +9,13 @@ set smarttab
 set autoindent
 set paste
 set nonumber
-set laststatus=2
 set noruler
 set linebreak
 set background=dark
 set guioptions-=r  " remove right scrollbar
+set foldcolumn=2
+set statusline=%F%m%r\ (%-2{&ff}){%Y}[%l,%v]\ %=%{strftime(\"%m/%d/%Y\ %A%l:%M%p\ \")}
+set laststatus=2
 
 colorscheme zen
 
@@ -63,5 +65,3 @@ function! ZenMode()
         endif
         set invfu 
 endfunction
-
-let g:evervim_devtoken='S=s4:U=44b67:E=158e065cc97:C=15188b49dc8:P=1cd:A=en-devtoken:V=2:H=c4dcf0dec72892d7dda773e3e4b5d7d4'

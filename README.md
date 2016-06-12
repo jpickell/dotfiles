@@ -57,6 +57,10 @@ Added command logging to the PROMPT_COMMAND per https://spin.atomicobject.com/20
    1. Mapped &lt;Leader&gt; b to enable on the fly switching from dark to light backgrounds.
    2. Mapped &lt;Leader&gt; z to toggle "Zen Mode" - a super simple distraction free full screen mode. 
 
+- Added a left margin using "foldcolumn=2" (colorized to match the bg via zen.vim)
+
+- Added a much improved status line
+
 Uses the zen.vim colorscheme located in ~/.vim/colors
 
 [-top-](#top)
