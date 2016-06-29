@@ -72,7 +72,14 @@ case "$UNAME" in
 esac
 
 n() { 
-	$EDITOR ~/Notes/"$*".txt 
+	if [ $* ]
+	    then
+		$EDITOR ~/Notes/"$*".txt
+	else
+		$EDITOR ~/Notes/`date +%m%d%Y`.txt
+        fi
+
+	#$EDITOR ~/Notes/"$*".txt 
 }
 
 nls() { 
