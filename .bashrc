@@ -32,6 +32,8 @@ alias more="less"
 alias l="less"
 alias s="sudo -Es"
 alias webshare="python -m SimpleHTTPServer 8888"
+
+# Added while I play with gpg 
 alias gpgd='gpg --delete-key'
 alias gpgds='gpg --delete-secret-key'
 
