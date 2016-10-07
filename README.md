@@ -39,12 +39,12 @@ OS Specific sections for some aliases and environment variables:
 
 **Functions**
 - Text Notes
--- *n*  By itself will create a note with today's date as the name of the note.  With an argument it will create a note with that name if it does not already exist.  If the note already exists, it will open the existing note in $EDITOR
+   1. *n*  By itself will create a note with today's date as the name of the note.  With an argument it will create a note with that name if it does not already exist.  If the note already exists, it will open the existing note in $EDITOR
 
--- *nls*  Lists all existing notes.  (Notes are created and stored in ~/Notes)
+   2. *nls*  Lists all existing notes.  (Notes are created and stored in ~/Notes)
 
 - Working with the Workspace
--- *W* By itself will list all directories under ~/Workspace.   With an argument it will change to that working directory and clear the screen
+   1. *W* By itself will list all directories under ~/Workspace.   With an argument it will change to that working directory and clear the screen
 
 
 
