@@ -43,7 +43,7 @@ OS Specific sections for some aliases and environment variables:
    2. **nls**  -- Lists all existing notes.  (Notes are created and stored in ~/Notes)
 
 - Working with the Workspace
-   1. *W* By itself will list all directories under ~/Workspace.   With an argument it will change to that working directory and clear the screen
+   1. **W** -- By itself will list all directories under ~/Workspace.   With an argument it will change to that working directory and clear the screen
 
 
 
