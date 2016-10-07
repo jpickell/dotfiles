@@ -32,8 +32,6 @@ alias more="less"
 alias l="less"
 alias s="sudo -Es"
 alias webshare="python -m SimpleHTTPServer 8888"
-
-# Added while I play with gpg 
 alias gpgd='gpg --delete-key'
 alias gpgds='gpg --delete-secret-key'
 
@@ -66,6 +64,7 @@ case "$UNAME" in
 	alias vi="mvim"
         alias va="mvim --remote-tab"
 	alias ww="ssh work"
+	alias pz="ssh prodzone1"
 	alias zz="open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
 	export EDITOR=mvim
 	export CLICOLOR=1
@@ -75,20 +74,37 @@ case "$UNAME" in
         ;;
 esac
 
+#------------------
+# Various Functions
+#------------------
 n() { 
 	if [ $* ]
 	    then
-		$EDITOR ~/Notes/"$*".txt
+		$EDITOR ~/Documents/Notes/"$*".txt
 	else
-		$EDITOR ~/Notes/`date +%m%d%Y`.txt
+		$EDITOR ~/Documents/Notes/`date +%m%d%Y`.txt
         fi
 
 	#$EDITOR ~/Notes/"$*".txt 
 }
 
 nls() { 
-	ls -c ~/Notes/ | grep "$*" 
+	ls -c ~/Documents/Notes/ | grep "$*" 
 }
+
+W() { 
+	if [ $* ]
+		then
+    			cd ~/Workspace/$*;clear
+		else
+			ls ~/Workspace/ 
+	fi
+}
+
+# End Functions 
+#------------------
+
+
 
 case "$HOSTNAME" in
         sand*) hc=$Cyan;;

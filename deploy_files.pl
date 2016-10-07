@@ -11,7 +11,7 @@ foreach $f(@files){
 		# need to make sure that the file isn't a symlink (.vimrc)
 		if(! -l $f){
 		print("copying $f to ~/$f\n");
-		#system("cp -pr $f ~/$f");
+		system("cp -pr $f ~/$f");
 		print("cp -pr $f ~/$f\n");
 		}
 	}

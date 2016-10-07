@@ -37,8 +37,19 @@ OS Specific sections for some aliases and environment variables:
 - SunOS
 - Darwin
 
+**Functions**
+- Text Notes
+-- *n*  By itself will create a note with today's date as the name of the note.  With an argument it will create a note with that name if it does not already exist.  If the note already exists, it will open the existing note in $EDITOR
 
-Added command logging to the PROMPT_COMMAND per https://spin.atomicobject.com/2016/05/28/log-bash-history/
+-- *nls*  Lists all existing notes.  (Notes are created and stored in ~/Notes)
+
+- Working with the Workspace
+-- *W* By itself will list all directories under ~/Workspace.   With an argument it will change to that working directory and clear the screen
+
+
+
+Command logging to the PROMPT_COMMAND per https://spin.atomicobject.com/2016/05/28/log-bash-history/ is now enabled by default.
+
 
 
 [-top-](#top)
