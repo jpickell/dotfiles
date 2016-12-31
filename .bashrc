@@ -9,6 +9,7 @@
 export UNAME=$(uname)
 export HOSTNAME=$(hostname)
 export HISTSIZE=2000
+export HISTTIMEFORMAT="%Y%m%d%H%M%S "
 export TERM=xterm-color
 export PATH=$PATH:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$HOME/bin
 export MANPATH=$MANPATH:/usr/man
@@ -173,3 +174,5 @@ case $UID in
             ;;
 
 esac
+
+set -o vi

@@ -1,4 +1,4 @@
-#<a name="top">My Dotfiles</a>
+#<a name="top"></a>My Dotfiles
 ---
 
 My "dotfile" collection.   Lots of prompt and environment customization for Bash and Vim along with a couple of legacy dotfiles that I keep around for historical reasons.
@@ -104,4 +104,4 @@ For more dotfiles head over to <a href="https://dotfiles.github.io">https://dotf
 ---
 
 
-Last Updated: Fri Oct  7 15:29:24 CDT 2016
+Last Updated: Sat Dec 31 08:07:03 CST 2016
