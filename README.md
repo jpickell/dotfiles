@@ -1,4 +1,4 @@
-#<a name="top"></a>My Dotfiles
+#<a name="top">My Dotfiles</a>
 ---
 
 My "dotfile" collection.   Lots of prompt and environment customization for Bash and Vim along with a couple of legacy dotfiles that I keep around for historical reasons.
