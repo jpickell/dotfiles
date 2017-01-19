@@ -40,28 +40,6 @@ alias gpgds='gpg --delete-secret-key'
 alias eyamlprd='ln -fs ~/Workspace/Puppet/keys/eyaml/prdpemaster01/public_key.pkcs7.pem ~/Workspace/Puppet/keys/eyaml; rm -f ~/Workspace/Puppet/keys/eyaml/private_key.pkcs7.pem'
 alias eyamlvag='ln -fs ~/Workspace/Puppet/keys/eyaml/vagrant/public_key.pkcs7.pem ~/Workspace/Puppet/keys/eyaml; ln -fs ~/Workspace/Puppet/keys/eyaml/vagrant/private_key.pkcs7.pem ~/Workspace/Puppet/keys/eyaml'
 
-### CloudFoundry Aliases ###
-# Requires https://github.com/guidowb/cf-targets-plugin
-# and the cf-cli: https://github.com/cloudfoundry/cli
-#
-alias sndcf01='cf set-target -f sndcf01'
-alias devcf01='cf set-target -f devcf01'
-alias devcf02='cf set-target -f devcf02'
-alias tstcf01='cf set-target -f tstcf01'
-alias tstcf02='cf set-target -f tstcf02'
-alias prdcf01='cf set-target -f prdcf01'
-alias prdcf02='cf set-target -f prdcf02'
-alias targets='cf targets'
-
-cflogin() {
-  if [ -z $1 ]; then
-    echo "Usage: cflogin <dev|tst|prd>"
-  else
-    env=$(echo $1 | tr '[:lower:]' '[:upper:]')
-    cf login -u pickellj -o WWT-IT -s ${env}
-  fi
-}
-
 #Vagrant
  alias vst='vagrant status'
  alias vgst='vagrant global-status'
@@ -105,8 +83,6 @@ case "$UNAME" in
 	alias synergy="/Applications/Synergy.app/Contents/MacOS/synergyc pickellj.wwt.com"
 	alias vi="mvim"
         alias va="mvim --remote-tab"
-	alias ww="ssh work"
-	alias pz="ssh prodzone1"
 	alias zz="open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
 	export EDITOR=mvim
 	export CLICOLOR=1
