@@ -21,5 +21,9 @@ if ($repo[0] =~  m/http/){
 	$remote = $repo[3];
 }
 
+if ($repo[0] =~  m/ssh/){
+	$remote = $repo[4];
+}
+
 print ("[$Frame$remote - $branch]\n");
 
