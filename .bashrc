@@ -33,10 +33,20 @@ alias more="less"
 alias l="less"
 alias s="sudo -Es"
 alias webshare="python -m SimpleHTTPServer 8888"
+alias mefi='lynx gopher://gopher.metafilter.com'
+alias pipup='pip list --outdated | grep -v "^\-e" | cut -d " " -f 1  | xargs -n1 pip install --upgrade' 
+
+### GPG Aliases ###
+alias gpgls='gpg --list-secret-key'
 alias gpgd='gpg --delete-key'
 alias gpgds='gpg --delete-secret-key'
 
+### Ansible Aliases ###
+alias ap='ansible-playbook'
+alias al='ansible-lint'
+
 ### Puppet Aliases ###
+alias pupt='puppet agent -t'
 alias eyamlprd='ln -fs ~/Workspace/Puppet/keys/eyaml/prdpemaster01/public_key.pkcs7.pem ~/Workspace/Puppet/keys/eyaml; rm -f ~/Workspace/Puppet/keys/eyaml/private_key.pkcs7.pem'
 alias eyamlvag='ln -fs ~/Workspace/Puppet/keys/eyaml/vagrant/public_key.pkcs7.pem ~/Workspace/Puppet/keys/eyaml; ln -fs ~/Workspace/Puppet/keys/eyaml/vagrant/private_key.pkcs7.pem ~/Workspace/Puppet/keys/eyaml'
 
