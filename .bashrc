@@ -13,6 +13,7 @@ export HISTTIMEFORMAT="%Y%m%d%H%M%S "
 export TERM=xterm-color
 export PATH=$PATH:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$HOME/bin
 export MANPATH=$MANPATH:/usr/man
+export BROWSER="lynx"
 
 if [ -f "/etc/dircolors" ]
 then
@@ -33,8 +34,11 @@ alias more="less"
 alias l="less"
 alias s="sudo -Es"
 alias webshare="python -m SimpleHTTPServer 8888"
-alias mefi='lynx gopher://gopher.metafilter.com'
 alias pipup='pip list --outdated | grep -v "^\-e" | cut -d " " -f 1  | xargs -n1 pip install --upgrade' 
+
+### Gopher Links ###
+alias mefi='$BROWSER gopher://gopher.metafilter.com'
+alias gwiki='$BROWSER gopher://gopherpedia.com'
 
 ### GPG Aliases ###
 alias gpgls='gpg --list-secret-key'
@@ -50,20 +54,21 @@ alias pupt='puppet agent -t'
 alias eyamlprd='ln -fs ~/Workspace/Puppet/keys/eyaml/prdpemaster01/public_key.pkcs7.pem ~/Workspace/Puppet/keys/eyaml; rm -f ~/Workspace/Puppet/keys/eyaml/private_key.pkcs7.pem'
 alias eyamlvag='ln -fs ~/Workspace/Puppet/keys/eyaml/vagrant/public_key.pkcs7.pem ~/Workspace/Puppet/keys/eyaml; ln -fs ~/Workspace/Puppet/keys/eyaml/vagrant/private_key.pkcs7.pem ~/Workspace/Puppet/keys/eyaml'
 
-#Vagrant
- alias vst='vagrant status'
- alias vgst='vagrant global-status'
- alias vup='vagrant up'
- alias vssh='vagrant ssh'
- alias vsus='vagrant suspend'
- alias vdel='vagrant destroy'
- alias vrdp='vagrant rdp'
- alias vprune='vagrant global-status --prune'
+### Vagrant Aliases ###
+alias vst='vagrant status'
+alias vgst='vagrant global-status'
+alias vup='vagrant up'
+alias vssh='vagrant ssh'
+alias vsus='vagrant suspend'
+alias vdel='vagrant destroy'
+alias vrdp='vagrant rdp'
+alias vprune='vagrant global-status --prune'
 
-#VirtualBox
- alias listhdds='VBoxManage list hdds'
- alias delhdd='VBoxManage closemedium disk $1 --delete'
+### VirtualBox Aliases ###
+alias listhdds='VBoxManage list hdds'
+alias delhdd='VBoxManage closemedium disk $1 --delete'
 
+### END ALIASES ###
 
 source ~/.colors 
 rst='\e[0m'    # Text Reset

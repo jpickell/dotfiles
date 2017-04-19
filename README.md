@@ -37,6 +37,9 @@ OS Specific sections for some aliases and environment variables:
 - SunOS
 - Darwin
 
+**Aliases**
+- Some nifty keyboard aliases to make common CLI strings a bit simpler to access, broken up by logical function
+
 **Functions**
 - Text Notes
    1. **n**  -- By itself will create a note with today's date as the name of the note.  With an argument it will create a note with that name if it does not already exist.  If the note already exists, it will open the existing note in $EDITOR
@@ -104,4 +107,4 @@ For more dotfiles head over to <a href="https://dotfiles.github.io">https://dotf
 ---
 
 
-Last Updated: Tue Mar 28 11:02:11 CDT 2017
+Last Updated: Tue Mar 28 12:55:00 CDT 2017
