@@ -24,7 +24,8 @@ then
   fi
 fi
 
-# Keyboard aliases
+#-- Keyboard aliases --#
+### Misc Aliases ###
 alias lsd="ls -al|grep ^d|grep -v '\.'"
 alias ld="ls -al|grep drw"
 alias ll="ls -al"
@@ -33,6 +34,7 @@ alias h="history"
 alias more="less"
 alias l="less"
 alias s="sudo -Es"
+alias weather="curl wttr.in"
 alias webshare="python -m SimpleHTTPServer 8888"
 alias pipup='pip list --outdated | grep -v "^\-e" | cut -d " " -f 1  | xargs -n1 pip install --upgrade' 
 
@@ -73,6 +75,7 @@ alias delhdd='VBoxManage closemedium disk $1 --delete'
 source ~/.colors 
 rst='\e[0m'    # Text Reset
 
+### OS Specific Aliases / Configs ###
 case "$UNAME" in
    Linux) 
 	alias vi="vim"
@@ -91,11 +94,8 @@ case "$UNAME" in
         ;;
    Darwin) 
 	alias o="open"
-	alias fc="curl wttr.in"
-	alias gnote="vi -c Geeknote"
 	alias gs="git-switch"
 	alias hh="ssh home"
-	alias synergy="/Applications/Synergy.app/Contents/MacOS/synergyc pickellj.wwt.com"
 	alias vi="mvim"
         alias va="mvim --remote-tab"
 	alias zz="open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
