@@ -114,15 +114,21 @@ n() {
 	if [ $* ]
 	    then
 		$EDITOR ~/Documents/Notes/"$*".txt
-	else
+            else
 		$EDITOR ~/Documents/Notes/`date +%m%d%Y`.txt
         fi
-
-	#$EDITOR ~/Notes/"$*".txt 
 }
 
 nls() { 
 	ls -c ~/Documents/Notes/ | grep "$*" 
+}
+
+wr () { if [ $* ] 
+	    then 
+		$EDITOR "$*".txt 
+	    else 
+		$EDITOR `date +%m%d%Y`.txt 
+	fi
 }
 
 W() { 

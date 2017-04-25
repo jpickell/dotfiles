@@ -1,8 +1,5 @@
 #!/usr/bin/perl
 
-# [git@prodgithub01.wwt.com:pickellj/dots.git - refs/heads/master]
-# https://prodgithub01.wwt.com/pickellj/dots.git
-
 if ( ! -e "/usr/bin/git"){exit;}
 if ( ! -d ".git"){exit;}
 
