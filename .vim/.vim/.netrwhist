@@ -1,10 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/Users/jkp'
-let g:netrw_dirhist_2='/Users/jkp/Workspace'
-let g:netrw_dirhist_3='/Users/jkp/Workspace/VxRS'
-let g:netrw_dirhist_4='/Users/jkp/Workspace/VxRS/dots'
-let g:netrw_dirhist_5='/Users/jkp'
-let g:netrw_dirhist_6='/Users/jkp/Workspace/VxRS/dots'
-let g:netrw_dirhist_7='/Users/jkp/Workspace/VxRS/dots/.git'
-let g:netrw_dirhist_8='/Users/jkp/Workspace/VxRS/dots'
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/Users/jkp/Library/Application Support/Tunnelblick/Configurations/VxRS.tblk'
+let g:netrw_dirhist_2='/Users/jkp/.newsbeuter'

@@ -1,8 +1,7 @@
 execute pathogen#infect()
 syntax on
 filetype indent plugin on
-set gfn=Cousine:h16  
-" set transparency=100
+set guifont=Menlo\ Regular:h14 
 set nocompatible
 set expandtab
 set smarttab
