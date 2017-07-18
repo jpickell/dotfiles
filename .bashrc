@@ -35,6 +35,7 @@ alias more="less"
 alias l="less"
 alias s="sudo -Es"
 alias weather="curl wttr.in/63366"
+alias moon="curl wttr.in/moon"
 alias webshare="python -m SimpleHTTPServer 8888"
 alias pipup='pip list --outdated | grep -v "^\-e" | cut -d " " -f 1  | xargs -n1 pip install --upgrade' 
 
