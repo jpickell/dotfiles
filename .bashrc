@@ -36,6 +36,7 @@ alias l="less"
 alias s="sudo -Es"
 alias weather="curl wttr.in/63366"
 alias moon="curl wttr.in/moon"
+alias news="newsbeuter -r"
 alias webshare="python -m SimpleHTTPServer 8888"
 alias pipup='pip list --outdated | grep -v "^\-e" | cut -d " " -f 1  | xargs -n1 pip install --upgrade' 
 
@@ -83,15 +84,6 @@ case "$UNAME" in
 	export EDITOR=vim
 	# Added logging per https://spin.atomicobject.com/2016/05/28/log-bash-history/
 	export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log; fi; echo -ne "\033]0;$P $LOGNAME@$HOSTNAME $P\007"'
-        ;;
-   SunOS) 
-	alias vi="vi"
-        alias s="sudo -E -s"
-	export EDITOR=vi
-	export TERM=xterm
-	export PATH=$PATH::/usr/sfw/bin:/opt/csw/bin
-	export MANPATH=$MANPATH:/opt/csw/man:/opt/redhat/rhn/solaris/man
-	export PROMPT_COMMAND='echo -ne "\033]0;$P $LOGNAME@$HOSTNAME $P\007"';
         ;;
    Darwin) 
 	alias o="open"
