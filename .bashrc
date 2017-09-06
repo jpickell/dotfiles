@@ -15,7 +15,6 @@ export TERM=xterm-color
 export PATH=$PATH:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$HOME/bin
 export MANPATH=$MANPATH:/usr/man
 export BROWSER="lynx"
-export GCAL="/usr/local/bin/gcalcli"
 
 if [ -f "/etc/dircolors" ]
 then
@@ -74,11 +73,6 @@ alias vprune='vagrant global-status --prune'
 ### VirtualBox Aliases ###
 alias listhdds='VBoxManage list hdds'
 alias delhdd='VBoxManage closemedium disk $1 --delete'
-
-### GcalCLI Aliases ###
-alias week='$GCAL calw'
-alias month='$GCAL calm'
-alias agenda='$GCAL agenda'
 
 ### END ALIASES ###
 
