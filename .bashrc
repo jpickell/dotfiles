@@ -15,6 +15,7 @@ export TERM=xterm-color
 export PATH=$PATH:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$HOME/bin
 export MANPATH=$MANPATH:/usr/man
 export BROWSER="lynx"
+export IN_API_TOKEN=$(cat ~/.config/instantnews/.apikey)
 
 IFS='.' read -r -a SYSFULL <<< "$HOSTNAME"
 SYSNAME=${SYSFULL[0]}
@@ -42,7 +43,8 @@ alias l="less"
 alias s="sudo -Es"
 alias weather="curl wttr.in/63366"
 alias moon="curl wttr.in/moon"
-alias news="newsbeuter -r"
+#alias news="newsbeuter -r"
+alias news="instantnews"
 alias webshare="python -m SimpleHTTPServer 8888"
 alias pipup='pip list --outdated | grep -v "^\-e" | cut -d " " -f 1  | xargs -n1 pip install --upgrade' 
 
@@ -137,6 +139,28 @@ W() {
 		else
 			ls ~/Workspace/ 
 	fi
+}
+
+vpnup () {
+  PIDFILE="/var/run/openvpn.pid"
+  if [ -f $PIDFILE ]
+  then
+    echo "OpenVPN already Running!"
+  else
+    sudo openvpn --daemon --writepid $PIDFILE --config /Users/jkp/Documents/VxRS/smart_phone.ovpn 
+  fi  
+}
+
+vpndown () {
+  PIDFILE="/var/run/openvpn.pid"
+  if [ -f $PIDFILE ]
+  then
+    PID=`cat $PIDFILE`
+    sudo kill "$PID"
+    sudo rm $PIDFILE
+  else
+    echo "OpenVPN does not appear to be running."
+  fi 
 }
 
 # End Functions 
