@@ -3,6 +3,7 @@ syntax on
 filetype indent plugin on
 set guifont=Menlo\ Regular:h14 
 set nocompatible
+"set transparency=10
 set expandtab
 set smarttab
 set autoindent
@@ -16,9 +17,11 @@ set foldcolumn=2
 set statusline=%F%m%r\ (%-2{&ff}){%Y}[%l,%v]\ %=%{strftime(\"%m/%d/%Y\ %A%l:%M%p\ \")}
 set laststatus=2
 
+let lmu = system('lmutracker')
+
 colorscheme zen
 
-let mapleader="\<Space>"
+"let mapleader="\<space>"
 nnoremap <Leader>o :e .<CR>
 nnoremap <Leader>z :call ZenMode()<CR>
 nnoremap <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
@@ -57,6 +60,7 @@ endfunction
 function! ZenMode()
         set lines=40 columns=100           " size of the editable area
         set laststatus=0
+        set foldcolumn=12
         if &background == "light"
                 set fuoptions=background:#00f0f0e5
         else
@@ -64,3 +68,5 @@ function! ZenMode()
         endif
         set invfu 
 endfunction
+
+

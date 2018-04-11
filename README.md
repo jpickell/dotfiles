@@ -107,4 +107,4 @@ For more dotfiles head over to <a href="https://dotfiles.github.io">https://dotf
 ---
 
 
-Last Updated: Wed Sep  6 14:51:35 CDT 2017
+Last Updated: Tue Apr 10 19:52:43 CDT 2018
