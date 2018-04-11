@@ -1,0 +1,9 @@
+#!/bin/bash
+VPNPID="/var/run/openvpn.pid"
+if [ -f $VPNPID ] 
+then 
+  V="X"
+else
+  V="@"
+fi
+echo $V
