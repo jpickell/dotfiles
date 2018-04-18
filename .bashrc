@@ -15,7 +15,6 @@ export TERM=xterm-color
 export PATH=$PATH:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$HOME/bin
 export MANPATH=$MANPATH:/usr/man
 export BROWSER="lynx"
-export IN_API_TOKEN=$(cat ~/.config/instantnews/.apikey)
 
 IFS='.' read -r -a SYSFULL <<< "$HOSTNAME"
 SYSNAME=${SYSFULL[0]}
@@ -43,8 +42,6 @@ alias l="less"
 alias s="sudo -Es"
 alias weather="curl wttr.in/63366"
 alias moon="curl wttr.in/moon"
-#alias news="newsbeuter -r"
-alias news="instantnews"
 alias webshare="python -m SimpleHTTPServer 8888"
 alias pipup='pip list --outdated | grep -v "^\-e" | cut -d " " -f 1  | xargs -n1 pip install --upgrade' 
 
@@ -60,11 +57,6 @@ alias gpgds='gpg --delete-secret-key'
 ### Ansible Aliases ###
 alias ap='ansible-playbook'
 alias al='ansible-lint'
-
-### Puppet Aliases ###
-alias pupt='puppet agent -t'
-alias eyamlprd='ln -fs ~/Workspace/Puppet/keys/eyaml/prdpemaster01/public_key.pkcs7.pem ~/Workspace/Puppet/keys/eyaml; rm -f ~/Workspace/Puppet/keys/eyaml/private_key.pkcs7.pem'
-alias eyamlvag='ln -fs ~/Workspace/Puppet/keys/eyaml/vagrant/public_key.pkcs7.pem ~/Workspace/Puppet/keys/eyaml; ln -fs ~/Workspace/Puppet/keys/eyaml/vagrant/private_key.pkcs7.pem ~/Workspace/Puppet/keys/eyaml'
 
 ### Vagrant Aliases ###
 alias vst='vagrant status'
