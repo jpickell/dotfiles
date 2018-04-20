@@ -9,7 +9,6 @@
 export UNAME=$(uname)
 export HOSTNAME=$(hostname)
 export HISTSIZE=2000
-export LOCATION=$(locateme)
 export HISTTIMEFORMAT="%Y%m%d%H%M%S "
 export TERM=xterm-color
 export PATH=$PATH:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$HOME/bin
@@ -31,12 +30,12 @@ fi
 
 #-- Keyboard aliases --#
 ### Misc Aliases ###
+alias ls='ls --color=auto'
 alias lsd="ls -al|grep ^d|grep -v '\.'"
 alias ld="ls -al|grep drw"
 alias ll="ls -al"
 alias c="clear"
 alias h="history"
-alias cat="ccat"
 alias more="less"
 alias l="less"
 alias s="sudo -Es"
@@ -80,8 +79,7 @@ rst='\e[0m'    # Text Reset
 ### OS Specific Aliases / Configs ###
 case "$UNAME" in
    Linux) 
-	alias vi="vim"
-	export EDITOR=vim
+	export EDITOR=vi
 	# Added logging per https://spin.atomicobject.com/2016/05/28/log-bash-history/
 	export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs/$SYSNAME-bash-history-$(date "+%Y-%m-%d").log; fi; echo -ne "\033]0;$P $LOGNAME@$HOSTNAME $P\007"'
         ;;
@@ -89,9 +87,11 @@ case "$UNAME" in
 	alias o="open"
 	alias gs="git-switch"
 	alias hh="ssh home"
+	alias cat="ccat"
 	alias vi="mvim"
         alias va="mvim --remote-tab"
 	alias zz="open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
+	export LOCATION=$(locateme)
 	export EDITOR=mvim
 	export CLICOLOR=1
 	export GOPATH=$HOME/bin/gocode
