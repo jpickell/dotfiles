@@ -30,7 +30,6 @@ fi
 
 #-- Keyboard aliases --#
 ### Misc Aliases ###
-alias ls='ls --color=auto'
 alias lsd="ls -al|grep ^d|grep -v '\.'"
 alias ld="ls -al|grep drw"
 alias ll="ls -al"
@@ -168,7 +167,7 @@ case "$HOSTNAME" in
         tst*) hc=$Yellow;;
         prod*) hc=$Red;;
         prd*) hc=$Red;;
-        *) hc=$White
+        *) hc=$Black
 esac
 frame=$hc;
 
@@ -179,7 +178,7 @@ case $UID in
             export PS1="\n\[$frame\][\[$root\]\u\[$frame\] \$(vpncheck) \[$hc\]\h\[$frame\]] [\[$root\]\d \T\[$frame\]] [\[$root\]\w\[$frame\]]\n\$(git-branch.pl)\[$Red\]$p\[$frame\]\[$Colour_Off\] "
             ;;
 
-        * ) root=$White;
+        * ) root=$BIBlue;
             p=\$;
             P=;
             export PS1="\n\[$frame\][\[$root\]\u\[$frame\] \$(vpncheck) \[$hc\]\h\[$frame\]] [\[$root\]\d \T\[$frame\]] [\[$root\]\w\[$frame\]]\n\$(git-branch.pl)\[$frame\]\[$root\]$p\[$frame\]\[$Colour_Off\] "
