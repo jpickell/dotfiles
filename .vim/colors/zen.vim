@@ -1,17 +1,21 @@
-" This file is built by ../source.vim.
-" Do not modify this file directly.
 highlight clear
 if exists('syntax_on')
 	syntax reset
 endif
-
+ 
 let g:colors_name = 'zen'
 
+if &background == 'bright'
+	colorscheme default
+	set foldcolumn=0
+	hi FoldColumn guifg=#333333 guibg=#ffffff ctermfg=234 ctermbg=255 cterm=none
+endif
+
 if &background == 'light'
-	hi Normal guifg=#2e2e2e guibg=#f0f0e5 gui=none ctermfg=234 ctermbg=255 cterm=none
+	hi Normal guifg=#2e2e2e guibg=#fdfdfd gui=none ctermfg=234 ctermbg=255 cterm=none
 	hi ColorColumn guibg=#dfd6d1 ctermbg=145
 	hi Comment guifg=#506a78 ctermfg=59
-	hi Conceal guifg=#0c6cc0 guibg=#f0f0e5 gui=none ctermfg=25 ctermbg=188
+	hi Conceal guifg=#0c6cc0 guibg=#fdfdfd gui=none ctermfg=25 ctermbg=188
 	hi Constant guifg=#1a7931 ctermfg=22
 	hi Cursor guibg=#f39812 ctermbg=172
 	hi CursorColumn guibg=#cce0ef ctermbg=146
@@ -25,14 +29,14 @@ if &background == 'light'
 	hi Directory guifg=#1177dd ctermfg=25
 	hi Error guifg=#d1160b guibg=#ffe3e5 ctermfg=124 ctermbg=223
 	hi ErrorMsg guifg=#d1160b guibg=#ffe3e5 ctermfg=124 ctermbg=223
-	hi FoldColumn guifg=#04530d guibg=#f0f0e5 ctermfg=234 ctermbg=255 cterm=none
+	hi FoldColumn guifg=#04530d guibg=#fdfdfd ctermfg=234 ctermbg=255 cterm=none
 	hi Folded guifg=#04530d guibg=#d0ead0 ctermfg=22 ctermbg=255
 	hi Function guifg=#cb1265 ctermfg=125
 	hi Identifier guifg=#1a5991 ctermfg=24
 	hi Ignore guifg=#666666 ctermfg=240
 	hi IncSearch guifg=#2e2e2e guibg=#f4b3c2 gui=none ctermfg=234 ctermbg=218
 	" hi LineNr guifg=#567686 guibg=#e2e2d0 ctermfg=236 ctermbg=145
-	hi LineNr guifg=#567686 guibg=#f0f0e5 ctermfg=234 ctermbg=218
+	hi LineNr guifg=#567686 guibg=#fdfdfd ctermfg=234 ctermbg=218
 	hi MatchParen guifg=#0e8ed3 guibg=#dbf2ff ctermfg=31 ctermbg=152
 	hi ModeMsg guifg=#337ca3 ctermfg=24
 	hi MoreMsg guifg=#1e7b3d ctermfg=22
@@ -68,8 +72,9 @@ if &background == 'light'
 	hi VertSplit guifg=#4a4642 guibg=#4a4642 gui=none ctermfg=237 ctermbg=237
 	hi Visual guibg=#cce0ef ctermbg=153
 	hi WarningMsg guifg=#ea6042 ctermfg=166
-	hi WildMenu guifg=#2e2e2e guibg=#f0f0e5 gui=none ctermfg=234 ctermbg=255 cterm=none
-else
+	hi WildMenu guifg=#2e2e2e guibg=#fdfdfd gui=none ctermfg=234 ctermbg=255 cterm=none
+endif
+if &background == 'dark'
 	hi Normal guifg=#dadad5 guibg=#121713 gui=none ctermfg=255 ctermbg=234 cterm=none
 	hi ColorColumn guibg=#262f21 ctermbg=235
 	hi Comment guifg=#707073 ctermfg=241
