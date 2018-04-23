@@ -3,7 +3,6 @@ syntax on
 filetype indent plugin on
 set guifont=Menlo\ Regular:h14 
 set nocompatible
-"set transparency=10
 set expandtab
 set smarttab
 set autoindent
@@ -11,17 +10,20 @@ set paste
 set nonumber
 set noruler
 set linebreak
-set background=dark
 set guioptions-=r  " remove right scrollbar
 set foldcolumn=2
 set statusline=%F%m%r\ (%-2{&ff}){%Y}[%l,%v]\ %=%{strftime(\"%m/%d/%Y\ %A%l:%M%p\ \")}
 set laststatus=2
 
-let lmu = system('lmutracker')
+" Initialize background color (dark or light) based on Macbook's ambient light sensor
+" lmutracker from https://gist.github.com/Glavin001/76ffcca87b946aa0b550f3ca46cbe146
+let lmu=system('~/bin/lmutracker')
+let mylmu = substitute(lmu, '^\s*\(.\{-}\)\s*$', '\1', '')
+let &background = (mylmu > 1000?"light":"dark")
 
 colorscheme zen
 
-"let mapleader="\<space>"
+let mapleader="\<space>"
 nnoremap <Leader>o :e .<CR>
 nnoremap <Leader>z :call ZenMode()<CR>
 nnoremap <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
@@ -36,9 +38,6 @@ vmap <Leader>p "+p
 vmap <Leader>P "+P
  
 :command! -nargs=1 LT call LoadTemplate(<f-args>)
-
-" turn-on distraction free writing mode for markdown files
-" au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} call ZenMode()
 
 function! LoadTemplate(fname)
   let g:my_template = "~/.vim/templates/" + a:fname
@@ -63,10 +62,10 @@ function! ZenMode()
         set foldcolumn=12
         if &background == "light"
                 set fuoptions=background:#00f0f0e5
-        else
+        elseif &background == "dark"
                 set fuoptions=background:#00121713
+	elseif &background == "bright"
+		set fuoptions=background:#ffffff
         endif
         set invfu 
 endfunction
-
-
