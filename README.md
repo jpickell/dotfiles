@@ -67,8 +67,9 @@ Command logging to the PROMPT_COMMAND per https://spin.atomicobject.com/2016/05/
 
 **<a name=".gvimrc">.gvimrc</a>**
 - Added a couple of nice features: 
-   1. Mapped &lt;Leader&gt; b to enable on the fly switching from dark to light backgrounds.
-   2. Mapped &lt;Leader&gt; z to toggle "Zen Mode" - a super simple distraction free full screen mode. 
+   1. With a little help from [lmutracker](https://gist.github.com/Glavin001/76ffcca87b946aa0b550f3ca46cb) the background color (dark or light) now initializes based on the Macbook ambient light sensor.
+   2. Mapped &lt;Leader&gt; b to enable on the fly switching from dark to light backgrounds.
+   3. Mapped &lt;Leader&gt; z to toggle "Zen Mode" - a super simple distraction free full screen mode. 
 
 - Added a left margin using "foldcolumn=2" (colorized to match the bg via zen.vim)
 
@@ -107,4 +108,4 @@ For more dotfiles head over to <a href="https://dotfiles.github.io">https://dotf
 ---
 
 
-Last Updated: Mon Apr 23 11:24:36 CDT 2018
+Last Updated: Mon Apr 23 12:01:18 CDT 2018
