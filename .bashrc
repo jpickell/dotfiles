@@ -14,6 +14,7 @@ export TERM=xterm-color
 export PATH=$PATH:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$HOME/bin
 export MANPATH=$MANPATH:/usr/man
 export BROWSER="lynx"
+export NOTESDIR="$HOME/Documents/Notes"
 
 IFS='.' read -r -a SYSFULL <<< "$HOSTNAME"
 SYSNAME=${SYSFULL[0]}
@@ -29,7 +30,7 @@ then
 fi
 
 #-- Keyboard aliases --#
-### Misc Aliases ###
+### GENERIC Aliases ###
 alias lsd="ls -al|grep ^d|grep -v '\.'"
 alias ld="ls -al|grep drw"
 alias ll="ls -al"
@@ -70,7 +71,7 @@ alias vprune='vagrant global-status --prune'
 alias listhdds='VBoxManage list hdds'
 alias delhdd='VBoxManage closemedium disk $1 --delete'
 
-### END ALIASES ###
+### END GENERIC ALIASES ###
 
 source ~/.colors 
 rst='\e[0m'    # Text Reset
@@ -79,6 +80,15 @@ rst='\e[0m'    # Text Reset
 case "$UNAME" in
    Linux) 
 	export EDITOR=vi
+	alias vi="gvim"
+        alias va="gvim --remote-tab $*"
+	alias au='apt update'
+	alias auu='apt upgrade'
+	alias as='apt search'
+	alias ai='apt install'
+	alias ar='apt remove'
+	alias alu='apt list --upgradable'
+
 	# Added logging per https://spin.atomicobject.com/2016/05/28/log-bash-history/
 	export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs/$SYSNAME-bash-history-$(date "+%Y-%m-%d").log; fi; echo -ne "\033]0;$P $LOGNAME@$HOSTNAME $P\007"'
         ;;
@@ -90,8 +100,9 @@ case "$UNAME" in
 	alias vi="mvim"
         alias va="mvim --remote-tab"
 	alias zz="open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
-	export LOCATION=$(locateme)
-	export EDITOR=mvim
+	# export LOCATION=$(locateme)
+	# export EDITOR=mvim
+	export EDITOR=vi
 	export CLICOLOR=1
 	export GOPATH=$HOME/bin/gocode
 	# Added logging per https://spin.atomicobject.com/2016/05/28/log-bash-history/
@@ -102,27 +113,31 @@ esac
 #------------------
 # Various Functions
 #------------------
+
+# Notes - Edit new or existing, defaults to .md
 n() { 
 	if [ $* ]
 	    then
-		$EDITOR ~/Documents/Notes/"$*".txt
+		$EDITOR $NOTESDIR/"$*".md
             else
-		$EDITOR ~/Documents/Notes/`date +%m%d%Y`.txt
+		$EDITOR $NOTESDIR/`date +%m%d%Y`.md
         fi
 }
 
+# Notes - List all notes (trim off extension for now)
 nls() { 
-	ls -c ~/Documents/Notes/ | grep "$*" 
+	ls -c $NOTESDIR | cut -f1 -d'.' 
 }
 
-wr () { if [ $* ] 
-	    then 
-		$EDITOR "$*".txt 
-	    else 
-		$EDITOR `date +%m%d%Y`.txt 
+# Notes - Search for notes 
+ns() { 
+	if [ $* ]
+	    then
+		grep -i $* $NOTESDIR/*.md
 	fi
 }
 
+# Workspace navigator
 W() { 
 	if [ $* ]
 		then
@@ -132,16 +147,18 @@ W() {
 	fi
 }
 
+# VPN Connect
 vpnup () {
   PIDFILE="/var/run/openvpn.pid"
   if [ -f $PIDFILE ]
   then
     echo "OpenVPN already Running!"
   else
-    sudo openvpn --daemon --writepid $PIDFILE --config /Users/jkp/Documents/vpn/smart_phone.ovpn 
+    sudo openvpn --daemon --writepid $PIDFILE --log-append /var/log/openvpn.log --config $HOME/Documents/vpn/smart_phone.ovpn 
   fi  
 }
 
+# VPN Disconnect
 vpndown () {
   PIDFILE="/var/run/openvpn.pid"
   if [ -f $PIDFILE ]
@@ -167,7 +184,7 @@ case "$HOSTNAME" in
         tst*) hc=$Yellow;;
         prod*) hc=$Red;;
         prd*) hc=$Red;;
-        *) hc=$Black
+        *) hc=$White
 esac
 frame=$hc;
 
@@ -175,15 +192,17 @@ case $UID in
         0 ) root=$Red;
             p=\#;
             P=!!!;
-            export PS1="\n\[$frame\][\[$root\]\u\[$frame\] \$(vpncheck) \[$hc\]\h\[$frame\]] [\[$root\]\d \T\[$frame\]] [\[$root\]\w\[$frame\]]\n\$(git-branch.pl)\[$Red\]$p\[$frame\]\[$Colour_Off\] "
+            export PS1="\n\[$frame\][\[$root\]\u\[$frame\] \$(vpncheck) \[$hc\]\h\[$frame\]] [\[$root\]\d \T\[$frame\]] [\[$root\]\w\[$frame\]]\n\$(git-branch.pl)\[$Red\]$p\[$frame\]\[$Color_Off\] "
             ;;
 
         * ) root=$BIBlue;
             p=\$;
             P=;
-            export PS1="\n\[$frame\][\[$root\]\u\[$frame\] \$(vpncheck) \[$hc\]\h\[$frame\]] [\[$root\]\d \T\[$frame\]] [\[$root\]\w\[$frame\]]\n\$(git-branch.pl)\[$frame\]\[$root\]$p\[$frame\]\[$Colour_Off\] "
+            export PS1="\n\[$frame\][\[$root\]\u\[$frame\] \$(vpncheck) \[$hc\]\h\[$frame\]] [\[$root\]\d \T\[$frame\]] [\[$root\]\w\[$frame\]]\n\$(git-branch.pl)\[$frame\]\[$root\]$p\[$frame\]\[$Color_Off\] "
             ;;
 
 esac
 
 set -o vi
+if [ $TILIX_ID ] || [ $VTE_VERSION ] ; then source /etc/profile.d/vte.sh; fi # Ubuntu Budgie END
+
