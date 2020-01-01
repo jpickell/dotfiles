@@ -108,4 +108,4 @@ For more dotfiles head over to <a href="https://dotfiles.github.io">https://dotf
 ---
 
 
-Last Updated: Mon Apr 23 12:01:18 CDT 2018
+Last Updated: Tue Dec 31 18:35:47 CST 2019
