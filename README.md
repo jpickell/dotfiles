@@ -76,6 +76,7 @@ Command logging to the PROMPT_COMMAND per https://spin.atomicobject.com/2016/05/
 
 **<a name="jkp.zsh-theme">jkp.zsh-theme</a>**
 - Zsh theme that sets the prompt to include user, date, pwd and git status.  Prompt turns red when sudo'ed to root.
+
 [-top-](#top)
 
 ---
@@ -123,4 +124,4 @@ For more dotfiles head over to <a href="https://dotfiles.github.io">https://dotf
 ---
 
 
-Last Updated: Tue Dec 31 18:44:41 CST 2019
+Last Updated: Tue Dec 31 21:02:25 CST 2019

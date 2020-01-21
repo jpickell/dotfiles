@@ -77,7 +77,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-export NOTESDIR="$HOME/Documents/Notes"
+export NOTESDIR="$HOME/Notes"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -136,7 +136,7 @@ n() {
 }
 
 # Notes - List all notes (trim off extension for now)
-nls() { 
+nl() { 
 	ls -c $NOTESDIR | cut -f1 -d'.' 
 }
 
@@ -148,4 +148,11 @@ ns() {
 	fi
 }
 
+# Notes View - Show the contents of a given note
+nv() {
+	if [ $* ]
+	    then 
+		cat $NOTESDIR/*.md
+	fi
+}
 
