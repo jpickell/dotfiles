@@ -124,4 +124,4 @@ For more dotfiles head over to <a href="https://dotfiles.github.io">https://dotf
 ---
 
 
-Last Updated: Tue Dec 31 21:02:25 CST 2019
+Last Updated: Mon Jan 20 22:06:21 CST 2020

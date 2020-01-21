@@ -145,6 +145,8 @@ ns() {
 	if [ $* ]
 	    then
 		grep -i $* $NOTESDIR/*.md
+	    else
+                echo "Please enter a search term\n\nns <search term>"
 	fi
 }
 
@@ -153,6 +155,8 @@ nv() {
 	if [ $* ]
 	    then 
 		cat $NOTESDIR/*.md
+	    else
+		echo "Please provide the name of a note to view\n\nnv <notename>"
 	fi
 }
 
