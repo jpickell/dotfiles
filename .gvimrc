@@ -1,7 +1,5 @@
-execute pathogen#infect()
 syntax on
 filetype indent plugin on
-set guifont=Menlo\ Regular:h14 
 set nocompatible
 set expandtab
 set smarttab
@@ -11,9 +9,13 @@ set nonumber
 set noruler
 set linebreak
 set guioptions-=r  " remove right scrollbar
+set guioptions-=m  " remove menu bar 
+set guioptions-=T  " remove toolbar
 set foldcolumn=2
 set statusline=%F%m%r\ (%-2{&ff}){%Y}[%l,%v]\ %=%{strftime(\"%m/%d/%Y\ %A%l:%M%p\ \")}
 set laststatus=2
+set fen
+set foldlevel=2
 
 " Initialize background color (dark or light) based on Macbook's ambient light sensor
 " lmutracker from https://gist.github.com/Glavin001/76ffcca87b946aa0b550f3ca46cbe146
@@ -23,11 +25,13 @@ let &background = (mylmu > 1000?"light":"dark")
 
 colorscheme zen
 
-let mapleader="\<space>"
+" let mapleader="\<space>"
 nnoremap <Leader>o :e .<CR>
 nnoremap <Leader>z :call ZenMode()<CR>
 nnoremap <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 nnoremap <Leader>d :r! date +"\%Y-\%m-\%d \%H:\%M:\%S"<CR>
+nnoremap <Leader>t :r! date +"\%H:\%M:\%S"<CR>
+
 
 " Copy & paste from system clipboard
 vmap <Leader>y "+y
@@ -54,8 +58,6 @@ function! FH()
   unlet s:line
 endfunction
 
-:map <Leader>H mz:execute FH()`zjA
-
 function! ZenMode()
         set lines=40 columns=100           " size of the editable area
         set laststatus=0
@@ -69,3 +71,30 @@ function! ZenMode()
         endif
         set invfu 
 endfunction
+
+" Handle folding for Markdown 
+function! MDF()  
+    if getline(v:lnum) =~ '^# .*$'
+        return ">1"
+    endif
+    if getline(v:lnum) =~ '^## .*$'
+        return ">2"
+    endif
+    if getline(v:lnum) =~ '^### .*$'
+        return ">3"
+    endif
+    if getline(v:lnum) =~ '^#### .*$'
+        return ">4"
+    endif
+    if getline(v:lnum) =~ '^##### .*$'
+        return ">5"
+    endif
+    if getline(v:lnum) =~ '^###### .*$'
+        return ">6"
+    endif
+    return "=" 
+endfunction
+
+au BufEnter *.md setlocal fdm=expr
+au BufEnter *.md setlocal foldexpr=MDF()
+" End Markdown Folding
