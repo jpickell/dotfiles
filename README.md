@@ -5,6 +5,8 @@ My "dotfile" collection.   Lots of prompt and environment customization for Bash
 
 - [.bashrc](#.bashrc)
 - [.bash_profile](#.bash_profile)
+- [.zshrc](#.zshrc)
+- [jkp.zsh-theme](#jkp.zsh-theme)
 - [.colors](#.colors)
 - [.emacs](#.emacs)
 - [.git](#.git)
@@ -65,6 +67,20 @@ Command logging to the PROMPT_COMMAND per https://spin.atomicobject.com/2016/05/
 
 ---
 
+**<a name=".zshrc">.zshrc</a>**
+- Includes improved note functions
+
+[-top-](#top)
+
+---
+
+**<a name="jkp.zsh-theme">jkp.zsh-theme</a>**
+- Zsh theme that sets the prompt to include user, date, pwd and git status.  Prompt turns red when sudo'ed to root.
+
+[-top-](#top)
+
+---
+
 **<a name=".gvimrc">.gvimrc</a>**
 - Added a couple of nice features: 
    1. With a little help from [lmutracker](https://gist.github.com/Glavin001/76ffcca87b946aa0b550f3ca46cb) the background color (dark or light) now initializes based on the Macbook ambient light sensor.
@@ -108,4 +124,4 @@ For more dotfiles head over to <a href="https://dotfiles.github.io">https://dotf
 ---
 
 
-Last Updated: Mon Apr 23 12:01:18 CDT 2018
+Last Updated: Mon Jan 20 22:06:21 CST 2020
