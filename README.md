@@ -68,6 +68,7 @@ Command logging to the PROMPT_COMMAND per https://spin.atomicobject.com/2016/05/
 ---
 
 **<a name=".zshrc">.zshrc</a>**
+- Now that MacOS (as of Catalina) has switched to ZSH as the default shell, I'm giving it a try, so to that end I've added my new zshrc to this repo.
 - Includes improved note functions
 
 [-top-](#top)
@@ -124,4 +125,4 @@ For more dotfiles head over to <a href="https://dotfiles.github.io">https://dotf
 ---
 
 
-Last Updated: Wed 22 Jan 2020 08:32:49 AM CST
+Last Updated: Wed 22 Jan 2020 09:51:04 PM CST
