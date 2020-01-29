@@ -96,3 +96,18 @@ nv() {
 	fi
 }
 
+# Notes View - Show the contents of yesterday's note
+yn() {
+  YN=`date -v-1d +%F`
+  view $NOTESDIR/$YN.md
+}
+
+# Notes View - Show the contents of Friday's note
+# so three days ago if its a Monday.  This should 
+# get re-writted to allow for params to choose any
+# day from the past week/month, etc
+# Would be nice to have some sort of chooser menu
+fn() {
+  YN=`date -v-3d +%F`
+  view $NOTESDIR/$YN.md
+}
