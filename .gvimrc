@@ -32,6 +32,9 @@ nnoremap <Leader>b :let &background = ( &background == "dark"? "light" : "dark" 
 nnoremap <Leader>d :r! date +"\%Y-\%m-\%d \%H:\%M:\%S"<CR>
 nnoremap <Leader>t :r! date +"\%H:\%M:\%S"<CR>
 
+" remap the space bar to toggle folds
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
 
 " Copy & paste from system clipboard
 vmap <Leader>y "+y
@@ -74,6 +77,7 @@ endfunction
 
 " Handle folding for Markdown 
 function! MDF()  
+    " Set fold values based on Markdown Headers
     if getline(v:lnum) =~ '^# .*$'
         return ">1"
     endif
@@ -92,9 +96,18 @@ function! MDF()
     if getline(v:lnum) =~ '^###### .*$'
         return ">6"
     endif
+    " End Markdown Header section
+
+    " Set fold values based on Timestamps
+    if getline(v:lnum) =~ '[0-9][0-9]:[0-9][0-9]:[0-9][0-9]'
+       return ">3"
+    endif
+    " End Timestamp section
+    
     return "=" 
 endfunction
 
+set fen
+set foldlevel=2
 au BufEnter *.md setlocal fdm=expr
 au BufEnter *.md setlocal foldexpr=MDF()
-" End Markdown Folding
