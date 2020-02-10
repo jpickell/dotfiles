@@ -92,16 +92,17 @@ nl() {
         done
         
         for d in $DIRS; do
-          echo "[" $d "]"
+          #echo "[" $d "]"
+          printf '[ %-15s ]\n' $d
           FLIST=`ls -c $NOTESDIR/$d|sed s/\ /_/g`
           #for fl in $(echo $FLIST); do
           #  echo " "$fl:r
           #done
         done
-        echo "---"
+        echo " " 
 
         for fl in $(echo $FILES); do
-          echo $fl:r
+          echo "- "$fl:r
         done
   fi
 }
@@ -112,13 +113,13 @@ nl() {
 ns() { 
 	if [ $* ]
 	    then
-		grep -i $* $NOTESDIR/*.md
+		    grep -i $* $NOTESDIR/*.md
 	    else
-                echo "Please enter a search term\n\nns <search term>"
+        echo "Please enter a search term\n\nns <search term>"
 	fi
 }
 
-# Notes View - Show the contents of a given note
+# Notes View - Show the contents of a given note 
 nv() {
 	if [ $* ]
 	    then 
