@@ -72,9 +72,41 @@ n() {
 }
 
 # Notes - List all notes (trim off extension for now)
-nl() { 
-	ls -c $NOTESDIR | cut -f1 -d'.' 
+nl() {
+  FILES=""
+  DIRS=""
+  if [ $* ]
+      # Handle subdirectories
+      then
+        echo $NOTESDIR/$* "\n----"
+        ls -c $NOTESDIR/$*|cut -f1 -d'.'
+      else 
+	      ITEMS=`ls -c $NOTESDIR | cut -f1 -d'.'`
+        for f in $( echo "$ITEMS"); do 
+        if [[ -d $NOTESDIR/$f ]]
+          then 
+            DIRS+=( $f )
+          else
+            FILES+=( $f )
+        fi
+        done
+        
+        for d in $DIRS; do
+          echo "[" $d "]"
+          FLIST=`ls -c $NOTESDIR/$d|sed s/\ /_/g`
+          #for fl in $(echo $FLIST); do
+          #  echo " "$fl:r
+          #done
+        done
+        echo "---"
+
+        for fl in $(echo $FILES); do
+          echo $fl:r
+        done
+  fi
 }
+
+
 
 # Notes - Search for notes 
 ns() { 
