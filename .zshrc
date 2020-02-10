@@ -73,6 +73,8 @@ n() {
 
 # Notes - List all notes (trim off extension for now)
 nl() {
+  command clear 
+  echo " "
   FILES=""
   DIRS=""
   if [ $* ]
@@ -93,7 +95,7 @@ nl() {
         
         for d in $DIRS; do
           #echo "[" $d "]"
-          printf '[ %-15s ]\n' $d
+          printf ' [ %-15s ]\n' $d
           FLIST=`ls -c $NOTESDIR/$d|sed s/\ /_/g`
           #for fl in $(echo $FLIST); do
           #  echo " "$fl:r
@@ -102,7 +104,7 @@ nl() {
         echo " " 
 
         for fl in $(echo $FILES); do
-          echo "- "$fl:r
+          echo " - "$fl:r
         done
   fi
 }
