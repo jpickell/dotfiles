@@ -134,7 +134,14 @@ nl() {
 ns() { 
 	if [ $* ]
 	    then
-		    grep -i $* $NOTESDIR/*.md
+        ITEMS=`find $NOTESDIR/ -name "*.md"`
+        for i in $(echo "$ITEMS"); do
+		      S=`grep -i $* $i`
+          if [[ $? -lt 1 ]]
+          then
+            echo "$fg_bold[$root]$i $reset_color \n$S\n" #$fg_bold[$root].$reset_color\n"
+          fi
+        done
 	    else
         echo "Please enter a search term\n\nns <search term>"
 	fi
@@ -144,7 +151,7 @@ ns() {
 nv() {
 	if [ $* ]
 	    then 
-		cat $NOTESDIR/*.md
+		view $NOTESDIR/$*.md
 	    else
 		echo "Please provide the name of a note to view\n\nnv <notename>"
 	fi
