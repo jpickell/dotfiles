@@ -27,9 +27,11 @@ else
   case `uname` in
     Linux)
       export EDITOR='gvim'
+      export YESTERDAY=`date --date="1 day ago" +%Y-%m-%d`
     ;;
     Darwin)
       export EDITOR='mvim'
+      export YESTERDAY=`date -v-1d +%F`
     ;;
   esac
 fi
@@ -57,18 +59,18 @@ alias vi=$EDITOR
 # Lets declare some vars here so we only do it once, instead of 
 # multiple times in each function.
 TODAY=`date +%Y-%m-%d`
-YESTERDAY=`date -v-1d +%F`
 YEAR=`date +%Y`
 YMONTH=`date +%Y-%m`
 
 # Archive older notes to the appropriate Year folder
-ARCHIVE=`find . -name "$YEAR*" -d 1 -type f -atime 12`
+# - Need to update to account for 2020-12-31.md, etc
+ARCHIVE=`find $(echo $NOTESDIR)/ -name "$YEAR*" -maxdepth 1 -type f -atime 1`
 
 if [ $#ARCHIVE -gt 0 ]
   then
     for a in $(echo $ARCHIVE); do
       echo "Archiving $a"
-      mv $NOTESDIR/$a $NOTESDIR/$YEAR/
+      mv $a $NOTESDIR/$YEAR/
     done
 fi
 
@@ -82,10 +84,8 @@ n() {
     else # The file exists, so open it in insert mode and add a timestamp.
       if [ ! -f $* ]  # Don't add a newline above the date if the file is new
         then 
-          #$EDITOR +star -c '$r!date +\%T;echo' $NOTESDIR/`date +%Y-%m-%d`.md
           $EDITOR +star -c '$r!date +\%T;echo' $NOTESDIR/$TODAY.md
         else
-          #$EDITOR +star -c '$r!echo;date +\%T;echo' $NOTESDIR/`date +%Y-%m-%d`.md
           $EDITOR +star -c '$r!echo;date +\%T;echo' $NOTESDIR/$TODAY.md
       fi
   fi
@@ -129,9 +129,8 @@ nl() {
   fi
 }
 
-
-
 # Notes - Search for notes 
+# Currently only searches the top level, does not descend directories
 ns() { 
 	if [ $* ]
 	    then
