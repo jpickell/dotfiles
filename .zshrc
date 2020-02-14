@@ -64,7 +64,7 @@ YMONTH=`date +%Y-%m`
 
 # Archive older notes to the appropriate Year folder
 # - Need to update to account for 2020-12-31.md, etc
-ARCHIVE=`find $(echo $NOTESDIR)/ -name "$YEAR*" -maxdepth 1 -type f -atime 1`
+ARCHIVE=`find $(echo $NOTESDIR)/ -maxdepth 1 -name "$YEAR*" -type f -atime 1`
 
 if [ $#ARCHIVE -gt 0 ]
   then
@@ -98,34 +98,34 @@ nl() {
   FILES=""
   DIRS=""
   if [ $* ]
-      # Handle subdirectories
-      then
-        echo $NOTESDIR/$* "\n----"
-        ls -c $NOTESDIR/$*|cut -f1 -d'.'
-      else 
-	      ITEMS=`ls -c $NOTESDIR | cut -f1 -d'.'`
-        for f in $( echo "$ITEMS"); do 
-        if [[ -d $NOTESDIR/$f ]]
-          then 
-            DIRS+=( $f )
-          else
-            FILES+=( $f )
-        fi
-        done
+    # Handle subdirectories
+  then
+    echo $NOTESDIR/$* "\n----"
+    ls -c $NOTESDIR/$*|cut -f1 -d'.'
+  else 
+	  ITEMS=`ls -c $NOTESDIR | cut -f1 -d'.'`
+    for f in $( echo "$ITEMS"); do 
+      if [[ -d $NOTESDIR/$f ]]
+      then 
+        DIRS+=( $f )
+      else
+        FILES+=( $f )
+      fi
+    done
         
-        for d in $DIRS; do
-          #echo "[" $d "]"
-          printf ' [ %-15s ]\n' $d
-          FLIST=`ls -c $NOTESDIR/$d|sed s/\ /_/g`
-          #for fl in $(echo $FLIST); do
-          #  echo " "$fl:r
-          #done
-        done
-        echo " " 
+    for d in $DIRS; do
+      #echo "[" $d "]"
+      printf ' [ %-15s ]\n' $d
+      FLIST=`ls -c $NOTESDIR/$d|sed s/\ /_/g`
+      #for fl in $(echo $FLIST); do
+      #  echo " "$fl:r
+      #done
+      done
+      echo " " 
 
-        for fl in $(echo $FILES); do
-          echo " - "$fl:r
-        done
+    for fl in $(echo $FILES); do
+        echo " - "$fl:r
+    done
   fi
 }
 
@@ -152,16 +152,5 @@ nv() {
 
 # Notes View - Show the contents of yesterday's note
 yn() {
-  YN=`date -v-1d +%F`
-  view $NOTESDIR/$YN.md
-}
-
-# Notes View - Show the contents of Friday's note
-# so three days ago if its a Monday.  This should 
-# get re-writted to allow for params to choose any
-# day from the past week/month, etc
-# Would be nice to have some sort of chooser menu
-fn() {
-  YN=`date -v-3d +%F`
-  view $NOTESDIR/$YN.md
+  view $NOTESDIR/$YEAR/$YESTERDAY.md
 }
