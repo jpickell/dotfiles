@@ -39,7 +39,7 @@ fi
 
 alias zshconfig="vi ~/.zshrc"
 alias ohmyzsh="vi ~/.oh-my-zsh"
-alias tsftp="sftp -i $HOME/Documents/Tanium/Local_Machine/tancopy_id_rsa tancopy@tanos.vxrs.com"
+alias tsftp="sftp -i $HOME/Documents/Tanium/Local_Machine/tancopy_id_rsa"
 alias c="clear"
 alias h="history"
 alias more="less"
@@ -53,6 +53,24 @@ alias vi=$EDITOR
 #------------------
 # Various Functions
 #------------------
+#
+# Lets declare some vars here so we only do it once, instead of 
+# multiple times in each function.
+TODAY=`date +%Y-%m-%d`
+YESTERDAY=`date -v-1d +%F`
+YEAR=`date +%Y`
+YMONTH=`date +%Y-%m`
+
+# Archive older notes to the appropriate Year folder
+ARCHIVE=`find . -name "$YEAR*" -d 1 -type f -atime 12`
+
+if [ $#ARCHIVE -gt 0 ]
+  then
+    for a in $(echo $ARCHIVE); do
+      echo "Archiving $a"
+      mv $NOTESDIR/$a $NOTESDIR/$YEAR/
+    done
+fi
 
 # Notes - Edit new or existing, defaults to .md
 n() { 
@@ -64,9 +82,11 @@ n() {
     else # The file exists, so open it in insert mode and add a timestamp.
       if [ ! -f $* ]  # Don't add a newline above the date if the file is new
         then 
-          $EDITOR +star -c '$r!date +\%T;echo' $NOTESDIR/`date +%Y-%m-%d`.md
+          #$EDITOR +star -c '$r!date +\%T;echo' $NOTESDIR/`date +%Y-%m-%d`.md
+          $EDITOR +star -c '$r!date +\%T;echo' $NOTESDIR/$TODAY.md
         else
-          $EDITOR +star -c '$r!echo;date +\%T;echo' $NOTESDIR/`date +%Y-%m-%d`.md
+          #$EDITOR +star -c '$r!echo;date +\%T;echo' $NOTESDIR/`date +%Y-%m-%d`.md
+          $EDITOR +star -c '$r!echo;date +\%T;echo' $NOTESDIR/$TODAY.md
       fi
   fi
 }
