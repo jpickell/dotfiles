@@ -62,20 +62,26 @@ TODAY=`date +%Y-%m-%d`
 YEAR=`date +%Y`
 YMONTH=`date +%Y-%m`
 
-# Archive older notes to the appropriate Year folder
-# - Need to update to account for 2020-12-31.md, etc
-ARCHIVE=`find $(echo $NOTESDIR)/ -maxdepth 1 -name "$YEAR*" -type f -atime 1`
 
-if [ $#ARCHIVE -gt 0 ]
-  then
-    for a in $(echo $ARCHIVE); do
-      echo "Archiving $a"
-      mv $a $NOTESDIR/$YEAR/
-    done
-fi
+# Archive older notes to the appropriate Year folder
+an() {
+  # - Need to update to account for 2020-12-31.md, etc
+  ARCHIVE=`find $(echo $NOTESDIR)/ -maxdepth 1 -name "$YEAR*" -type f -atime 1`
+
+  if [ $#ARCHIVE -gt 0 ]
+    then
+      for a in $(echo $ARCHIVE); do
+        echo "Archiving $a"
+        mv $a $NOTESDIR/$YEAR/
+      done
+  fi
+}
 
 # Notes - Edit new or existing, defaults to .md
 n() { 
+  # Check for old dailies and archive if found
+  an
+
   if [ $* ]
     then
       # Strip the file extension and use .md always
