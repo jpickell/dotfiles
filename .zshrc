@@ -58,10 +58,17 @@ alias vi=$EDITOR
 #
 # Lets declare some vars here so we only do it once, instead of 
 # multiple times in each function.
-TODAY=`date +%Y-%m-%d`
-YEAR=`date +%Y`
-YMONTH=`date +%Y-%m`
 
+# Dates need to be functionalized so that they can be called and updated 
+# from time to time (and not just when a new shell is spawned)
+dt() {
+  TODAY=`date +%Y-%m-%d`
+  YEAR=`date +%Y`
+  YMONTH=`date +%Y-%m`
+}
+
+# Call dt to set initial date
+dt
 
 # Archive older notes to the appropriate Year folder
 an() {
@@ -79,6 +86,9 @@ an() {
 
 # Notes - Edit new or existing, defaults to .md
 n() { 
+  # Get current date
+  dt
+
   # Check for old dailies and archive if found
   an
 
