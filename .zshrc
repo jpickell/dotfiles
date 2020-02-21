@@ -177,3 +177,8 @@ nv() {
 yn() {
   view $NOTESDIR/$YEAR/$YESTERDAY.md
 }
+
+# ASDF Configs
+# https://asdf-vm.com/
+. $HOME/.asdf/asdf.sh 
+. $HOME/.asdf/completions/asdf.bash
