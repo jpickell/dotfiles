@@ -125,4 +125,4 @@ For more dotfiles head over to <a href="https://dotfiles.github.io">https://dotf
 ---
 
 
-Last Updated: Tue 18 Feb 2020 08:53:48 AM CST
+Last Updated: Fri 21 Feb 2020 10:38:38 AM CST

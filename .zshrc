@@ -9,7 +9,7 @@ DISABLE_AUTO_TITLE="true"
 # DISABLE_UPDATE_PROMPT="true"
 # export UPDATE_ZSH_DAYS=13
 
-HIST_STAMPS="yyyy.mm.dd"
+#HIST_STAMPS="yyyy.mm.dd"
 ZSH_DISABLE_COMPFIX=true
 
 plugins=(git)
@@ -73,7 +73,7 @@ dt
 # Archive older notes to the appropriate Year folder
 an() {
   # - Need to update to account for 2020-12-31.md, etc
-  ARCHIVE=`find $(echo $NOTESDIR)/ -maxdepth 1 -name "$YEAR*" -type f -atime 1`
+  ARCHIVE=`find $(echo $NOTESDIR)/ -maxdepth 1 -name "$YEAR*" -type f -mtime +1`
 
   if [ $#ARCHIVE -gt 0 ]
     then
@@ -88,7 +88,6 @@ an() {
 n() { 
   # Get current date
   dt
-
   # Check for old dailies and archive if found
   an
 
@@ -109,6 +108,8 @@ n() {
 
 # Notes - List all notes (trim off extension for now)
 nl() {
+  dt
+  an
   command clear 
   echo " "
   FILES=""
@@ -180,5 +181,5 @@ yn() {
 
 # ASDF Configs
 # https://asdf-vm.com/
-. $HOME/.asdf/asdf.sh 
+. $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
