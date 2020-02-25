@@ -64,16 +64,34 @@ alias vi=$EDITOR
 dt() {
   TODAY=`date +%Y-%m-%d`
   YEAR=`date +%Y`
+  MONTH=`date +%B`
+  DAY=`date +%a`
   YMONTH=`date +%Y-%m`
 }
 
 # Call dt to set initial date
 dt
 
+# print out the week, highlight today
+pw() {
+  DAYS="Sun Mon Tue Wed Thu Fri Sat"
+  printf "\n\n"
+  
+  for d in $(echo $DAYS); do
+    if [ $d = $DAY ];
+    then
+      printf "$fg_bold[$root]$d$reset_color "
+    else
+      printf "$d "
+    fi
+  done
+  printf "\n"
+}
+
 # Archive older notes to the appropriate Year folder
 an() {
   # - Need to update to account for 2020-12-31.md, etc
-  ARCHIVE=`find $(echo $NOTESDIR)/ -maxdepth 1 -name "$YEAR*" -type f -mtime +1`
+  ARCHIVE=`find $(echo $NOTESDIR)/ -maxdepth 1 -name "$YEAR*" -type f -mtime 1`
 
   if [ $#ARCHIVE -gt 0 ]
     then
@@ -144,6 +162,7 @@ nl() {
         echo " - "$fl:r
     done
   fi
+  pw
 }
 
 # Notes - Search for notes 
