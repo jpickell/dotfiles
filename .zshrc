@@ -80,9 +80,9 @@ pw() {
   for d in $(echo $DAYS); do
     if [ $d = $DAY ];
     then
-      printf "$fg_bold[$root]$d$reset_color "
+      printf " $fg_bold[$root]$d$reset_color  "
     else
-      printf "$d "
+      printf " $d  "
     fi
   done
   printf "\n"
@@ -148,18 +148,36 @@ nl() {
       fi
     done
         
+    C=1
     for d in $DIRS; do
       #echo "[" $d "]"
-      printf ' [ %-15s ]\n' $d
+      if [ $((C%2)) -gt 0 ]
+      then
+        printf ' [ %-16s ] ' $d
+      else
+        printf ' [ %-16s ]\n' $d
+      fi
+      
       FLIST=`ls -c $NOTESDIR/$d|sed s/\ /_/g`
       #for fl in $(echo $FLIST); do
       #  echo " "$fl:r
       #done
-      done
-      echo " " 
+     
+      C=$((C+1))
+    done
+    printf '\n\n%14s. . . . . .\n\n'
 
+    C2=1
     for fl in $(echo $FILES); do
-        echo " - "$fl:r
+      if [ $((C2%2)) -gt 0 ]
+      then
+        printf ' > %-20s ' $fl
+      else
+        printf "> $fl\n"
+        #echo " - "$fl:r
+      fi
+      C2=$((C2+1))
+
     done
   fi
   pw
