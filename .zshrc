@@ -80,9 +80,9 @@ pw() {
   for d in $(echo $DAYS); do
     if [ $d = $DAY ];
     then
-      printf "$fg_bold[$root]$d$reset_color "
+      printf " $fg_bold[$root]$d$reset_color  "
     else
-      printf "$d "
+      printf " $d  "
     fi
   done
   printf "\n"
