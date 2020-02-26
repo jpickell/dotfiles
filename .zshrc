@@ -153,9 +153,9 @@ nl() {
       #echo "[" $d "]"
       if [ $((C%2)) -gt 0 ]
       then
-        printf ' [ %-12s ] ' $d
+        printf ' [ %-16s ] ' $d
       else
-        printf ' [ %-12s ]\n' $d
+        printf ' [ %-16s ]\n' $d
       fi
       
       FLIST=`ls -c $NOTESDIR/$d|sed s/\ /_/g`
@@ -171,9 +171,9 @@ nl() {
     for fl in $(echo $FILES); do
       if [ $((C2%2)) -gt 0 ]
       then
-        printf ' %-20s ' $fl
+        printf ' > %-20s ' $fl
       else
-        printf "$fl\n"
+        printf "> $fl\n"
         #echo " - "$fl:r
       fi
       C2=$((C2+1))
