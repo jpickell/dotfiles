@@ -26,12 +26,23 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   case `uname` in
     Linux)
-      export EDITOR='gvim'
-      export YESTERDAY=`date --date="1 day ago" +%Y-%m-%d`
+      	export EDITOR='gvim'
+      	export YESTERDAY=`date --date="1 day ago" +%Y-%m-%d`
+	alias au='apt update'
+	alias auu='apt upgrade'
+	alias as='apt search'
+	alias ai='apt install'
+	alias ar='apt remove'
+	alias al='apt list --upgradable'
     ;;
     Darwin)
-      export EDITOR='mvim'
-      export YESTERDAY=`date -v-1d +%F`
+      	export EDITOR='mvim'
+     	export YESTERDAY=`date -v-1d +%F`
+        alias bu='brew update'
+        alias bs='brew search'
+        alias bi='brew install'
+        alias br='brew remove'
+        alias bl='brew list'
     ;;
   esac
 fi
@@ -49,6 +60,11 @@ alias l="less"
 alias s="sudo -Es"
 alias lsd="ls -al|grep ^d"
 alias vi=$EDITOR
+alias weather="curl wttr.in/63366"
+alias moon="curl wttr.in/moon"
+alias webshare="python -m SimpleHTTPServer 8888"
+alias pipup='pip list --outdated | grep -v "^\-e" | cut -d " " -f 1  | xargs -n1 pip install --upgrade'
+
 
 #precmd() { print -Pn "\e]0;$*\a" }
 
@@ -66,6 +82,7 @@ dt() {
   YEAR=`date +%Y`
   MONTH=`date +%B`
   DAY=`date +%a`
+  DN=`date +%d`
   YMONTH=`date +%Y-%m`
 }
 
@@ -76,7 +93,7 @@ dt
 pw() {
   DAYS="Sun Mon Tue Wed Thu Fri Sat"
   printf "\n\n"
-  
+  printf " $MONTH $DN\n"
   for d in $(echo $DAYS); do
     if [ $d = $DAY ];
     then
