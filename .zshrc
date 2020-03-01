@@ -110,13 +110,13 @@ pw() {
 
 # Workspace navigator
 ws() { 
-	if [ $* ]
-		then
-    			cd ~/Workspace/$*;clear
-		else
-      printf " $fg_bold[$root]Workspaces$reset_color\n "
-			ls ~/Workspace/ 
-	fi
+  if [ $* ]
+  then
+    cd ~/Workspace/$*;clear
+  else
+    printf " $fg_bold[$root]Workspaces$reset_color\n "
+    ls ~/Workspace/ 
+  fi
 }
 
 # Archive older notes to the appropriate Year folder
@@ -144,10 +144,19 @@ n() {
     then
       # Strip the file extension and use .md always
       file=$*:r
-      $EDITOR $NOTESDIR/"$file".md
+      if [ -d $NOTESDIR/$file ]
+      then
+        $EDITOR $NOTESDIR/$file/$TODAY.md
+      else
+        $EDITOR $NOTESDIR/"$file".md
+      fi
     else # The file exists, so open it in insert mode and add a timestamp.
       if [ ! -f $* ]  # Don't add a newline above the date if the file is new
         then 
+
+        # Check to see if the arg matches a directory, and then 
+        # modify the location so that the TODAY file gets created in the 
+ 	# proper directory so we don't have to specify DIR/$TODAY
           $EDITOR +star -c '$r!date +\%T;echo' $NOTESDIR/$TODAY.md
         else
           $EDITOR +star -c '$r!echo;date +\%T;echo' $NOTESDIR/$TODAY.md
@@ -205,7 +214,7 @@ nl() {
       C=$((C+1))
     done
     # printf '\n\n%14s. . .\n\n'
-    printf '\n'
+    printf '\n\n'
 
     C2=1
     for fl in $(echo $FILES); do
