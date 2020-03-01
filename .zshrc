@@ -77,6 +77,9 @@ alias pipup='pip list --outdated | grep -v "^\-e" | cut -d " " -f 1  | xargs -n1
 
 # Dates need to be functionalized so that they can be called and updated 
 # from time to time (and not just when a new shell is spawned)
+WIDTH=`tput cols`
+HEIGHT=`tput lines`
+
 dt() {
   TODAY=`date +%Y-%m-%d`
   YEAR=`date +%Y`
@@ -93,7 +96,7 @@ dt
 pw() {
   DAYS="Sun Mon Tue Wed Thu Fri Sat"
   printf "\n\n"
-  printf " $MONTH $DN\n"
+  printf " $fg_bold[$root]$MONTH $DN$reset_color\n"
   for d in $(echo $DAYS); do
     if [ $d = $DAY ];
     then
@@ -111,7 +114,7 @@ ws() {
 		then
     			cd ~/Workspace/$*;clear
 		else
-      printf " Workspaces\n "
+      printf " $fg_bold[$root]Workspaces$reset_color\n "
 			ls ~/Workspace/ 
 	fi
 }
@@ -176,14 +179,22 @@ nl() {
       fi
     done
         
+    NUM=${#DIRS[@]}
+    CWIDTH=14
+    COLS=$(($WIDTH/20))
+
     C=1
     for d in $DIRS; do
       #echo "[" $d "]"
-      if [ $((C%2)) -gt 0 ]
-      then
-        printf ' [ %-16s ] ' $d
+      if [ $((C%4)) -gt 0 ]
+      then 
+	printf " $fg_bold[$root][ $reset_color"
+        printf '%-14s' $d
+	printf " $fg_bold[$root]]$reset_color"
       else
-        printf ' [ %-16s ]\n' $d
+	printf " $fg_bold[$root][ $reset_color"
+        printf '%-14s' $d
+	printf " $fg_bold[$root]]$reset_color\n"
       fi
       
       FLIST=`ls -c $NOTESDIR/$d|sed s/\ /_/g`
@@ -193,15 +204,18 @@ nl() {
      
       C=$((C+1))
     done
-    printf '\n\n%14s. . . . . .\n\n'
+    # printf '\n\n%14s. . .\n\n'
+    printf '\n'
 
     C2=1
     for fl in $(echo $FILES); do
-      if [ $((C2%2)) -gt 0 ]
+      if [ $((C2%3)) -gt 0 ]
       then
-        printf ' > %-20s ' $fl
+	printf " $fg_bold[$root]> $reset_color"
+        printf '%-20s ' $fl
       else
-        printf "> $fl\n"
+	printf " $fg_bold[$root]> $reset_color"
+        printf "$fl\n"
         #echo " - "$fl:r
       fi
       C2=$((C2+1))
