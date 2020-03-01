@@ -105,6 +105,16 @@ pw() {
   printf "\n"
 }
 
+# Workspace navigator
+W() { 
+	if [ $* ]
+		then
+    			cd ~/Workspace/$*;clear
+		else
+			ls ~/Workspace/ 
+	fi
+}
+
 # Archive older notes to the appropriate Year folder
 an() {
   # - Need to update to account for 2020-12-31.md, etc
