@@ -9,7 +9,7 @@ esac
 base=green
 
 PROMPT=$'
-[%{$fg_bold[$root]%}$user%{$reset_color%}] [%{$fg_bold[$base]%}%D{%c}%{$reset_color%}] [%{$reset_color%}%{$fg_bold[$base]%}%~%{$reset_color%}] $(git_prompt_info)\
+[%{$fg_bold[$root]%}$user%{$reset_color%}] [%{$fg_bold[$base]%}%D{%T %p}%{$reset_color%}] [%{$reset_color%}%{$fg_bold[$base]%}%~%{$reset_color%}] $(git_prompt_info)\
 %{$fg[blue]%}%{$fg_bold[blue]%}%#%{$reset_color%} '
 
 #RPROMPT="[$D{%y/%m/%f}|%@]"
