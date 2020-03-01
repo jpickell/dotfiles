@@ -102,7 +102,7 @@ pw() {
       printf " $d  "
     fi
   done
-  printf "\n"
+  printf "\n\n"
 }
 
 # Workspace navigator
@@ -111,6 +111,7 @@ ws() {
 		then
     			cd ~/Workspace/$*;clear
 		else
+      printf " Workspaces\n "
 			ls ~/Workspace/ 
 	fi
 }
@@ -208,6 +209,7 @@ nl() {
     done
   fi
   pw
+  ws
 }
 
 # Notes - Search for notes 
