@@ -106,7 +106,7 @@ pw() {
 }
 
 # Workspace navigator
-W() { 
+ws() { 
 	if [ $* ]
 		then
     			cd ~/Workspace/$*;clear
