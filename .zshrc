@@ -230,9 +230,9 @@ nl() {
       C2=$((C2+1))
 
     done
-  fi
   pw
   ws
+  fi
 }
 
 # Notes - Search for notes 
