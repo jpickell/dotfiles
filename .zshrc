@@ -193,20 +193,26 @@ nl() {
     COLS=$(($WIDTH/20))
 
     C=1
+
     for d in $DIRS; do
-      #echo "[" $d "]"
+
+      #FLIST=`ls -c $NOTESDIR/$d`
+      FC=`ls $NOTESDIR/$d|wc -l`
+      #print "\n$NOTESDIR/$d : $FC\n"
+
       if [ $((C%4)) -gt 0 ]
       then 
-	printf " $fg_bold[$root][ $reset_color"
+	      printf " $fg_bold[$root][ $reset_color"
         printf '%-14s' $d
-	printf " $fg_bold[$root]]$reset_color"
+        printf "$(echo $FC)"
+	      printf " $fg_bold[$root]]$reset_color"
       else
-	printf " $fg_bold[$root][ $reset_color"
+	      printf " $fg_bold[$root][ $reset_color"
         printf '%-14s' $d
-	printf " $fg_bold[$root]]$reset_color\n"
+        printf "$(echo $FC)"
+	      printf " $fg_bold[$root]]$reset_color\n"
       fi
       
-      FLIST=`ls -c $NOTESDIR/$d|sed s/\ /_/g`
       #for fl in $(echo $FLIST); do
       #  echo " "$fl:r
       #done
