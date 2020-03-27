@@ -95,7 +95,7 @@ dt
 # print out the week, highlight today
 pw() {
   DAYS="Sun Mon Tue Wed Thu Fri Sat"
-  printf "\n\n"
+  printf "\n"
   printf " $fg_bold[$root]$MONTH $DN$reset_color\n"
   for d in $(echo $DAYS); do
     if [ $d = $DAY ];
@@ -114,9 +114,35 @@ ws() {
   then
     cd ~/Workspace/$*;clear
   else
-    printf " $fg_bold[$root]Workspaces$reset_color\n "
-    ls ~/Workspace/ 
+    C=1
+    printf "\n\n $fg_bold[$root]Workspaces$reset_color\n"
+    REPOS=`ls ~/Workspace/`
+    for r in $(echo $REPOS); do
+      if [ $((C%4)) -gt 0 ]; then
+        printf " $fg_bold[$root]# $reset_color"
+        printf '%-14s' $r
+      else
+        printf " $fg_bold[$root]# $reset_color"
+        printf '%-14s\n' $r
+      fi
+    C=$((C+1))
+    done
   fi
+}
+
+# World Clocks
+cl(){
+  PTZ=`TZ=:America/Los_Angeles date +%T`
+  MTZ=`TZ=:America/Denver date +%T`
+  CTZ=`TZ=:America/Chicago date +%T`
+  ETZ=`TZ=:America/New_York date +%T`
+
+  TIMEZONES="Pacific  Mountain Central Eastern"
+  for TZ in $(echo $TIMEZONES); do
+    printf ' %-14s' $TZ
+  done
+  printf "\n"
+  printf ' %-14s %-14s %-14s %-14s\n' $PTZ $MTZ $CTZ $ETZ
 }
 
 # Archive older notes to the appropriate Year folder
@@ -135,9 +161,7 @@ an() {
 
 # Notes - Edit new or existing, defaults to .md
 n() { 
-  # Get current date
   dt
-  # Check for old dailies and archive if found
   an
 
   if [ $* ]
@@ -153,10 +177,9 @@ n() {
     else # The file exists, so open it in insert mode and add a timestamp.
       if [ ! -f $* ]  # Don't add a newline above the date if the file is new
         then 
-
         # Check to see if the arg matches a directory, and then 
         # modify the location so that the TODAY file gets created in the 
- 	# proper directory so we don't have to specify DIR/$TODAY
+ 	      # proper directory so we don't have to specify DIR/$TODAY
           $EDITOR +star -c '$r!date +\%T;echo' $NOTESDIR/$TODAY.md
         else
           $EDITOR +star -c '$r!echo;date +\%T;echo' $NOTESDIR/$TODAY.md
@@ -169,12 +192,14 @@ nl() {
   dt
   an
   command clear 
+
   echo " "
   FILES=""
   DIRS=""
   if [ $* ]
     # Handle subdirectories
   then
+    # Test to see if we're enumerating a dir or a file
     echo $NOTESDIR/$* "\n----"
     ls -c $NOTESDIR/$*|cut -f1 -d'.'
   else 
@@ -195,11 +220,7 @@ nl() {
     C=1
 
     for d in $DIRS; do
-
-      #FLIST=`ls -c $NOTESDIR/$d`
       FC=`ls $NOTESDIR/$d|wc -l`
-      #print "\n$NOTESDIR/$d : $FC\n"
-
       if [ $((C%4)) -gt 0 ]
       then 
 	      printf " $fg_bold[$root][ $reset_color"
@@ -213,31 +234,26 @@ nl() {
 	      printf " $fg_bold[$root]]$reset_color\n"
       fi
       
-      #for fl in $(echo $FLIST); do
-      #  echo " "$fl:r
-      #done
-     
       C=$((C+1))
     done
-    # printf '\n\n%14s. . .\n\n'
     printf '\n\n'
 
     C2=1
     for fl in $(echo $FILES); do
       if [ $((C2%3)) -gt 0 ]
       then
-	printf " $fg_bold[$root]> $reset_color"
+	      printf " $fg_bold[$root]> $reset_color"
         printf '%-20s ' $fl
       else
-	printf " $fg_bold[$root]> $reset_color"
+	      printf " $fg_bold[$root]> $reset_color"
         printf "$fl\n"
-        #echo " - "$fl:r
       fi
       C2=$((C2+1))
-
     done
-  pw
   ws
+  pw 
+  cl
+  
   fi
 }
 
