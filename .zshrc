@@ -97,7 +97,7 @@ dt
 pw() {
   DAYS="Sunday Monday Tuesday Wednesday Thursday Friday Saturday"
   printf "\n\n"
-  printf " $fg_bold[$root]$MONTH $DN$reset_color\n"
+  printf " $fg_bold[$root]$MONTH $DN$reset_color |"
   for d in $(echo $DAYS); do
     if [ $d = $FDAY ];
     then
