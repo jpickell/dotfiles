@@ -82,8 +82,8 @@ getcols(){
   WIDTH=`tput cols`
   HEIGHT=`tput lines`
   case $WIDTH in 
-    [0-8][0-9]|90      ) COLS=2;;
-    9[1-9]|10[0-9]  ) COLS=3;;
+    [0-8][0-9]|90               ) COLS=2;;
+    9[0-9]|10[0-9]              ) COLS=3;;
     1[1-9][0-9]|[2-9][0-9][0-9] ) COLS=4;;
   esac
 }
@@ -142,6 +142,7 @@ ws() {
 
 # World Clocks
 cl(){
+  # Need to convert this to use a hash
   TIMEZONES="HongKong Pacific Mountain Central Eastern London"
 
   HongKong=(`TZ=:HongKong date +%T`)
@@ -150,31 +151,37 @@ cl(){
   Central=`TZ=:America/Chicago date +%T`
   Eastern=`TZ=:America/New_York date +%T`
   London=`TZ=:Europe/London date +%T`
+  if [ $COLS -gt 2 ];then
+    # Print the headers 
+    for TZ in $(echo $TIMEZONES); do
+      if [ $TZ = "Central" ]; then
+        CTZ="$fg_bold[$root]$CTZ$reset_color "
+        printf "$fg_bold[$root]"
+        printf ' %-11s' $TZ
+        printf "$reset_color"
+      else
+        printf ' %-11s' $TZ
+      fi
+    done
+    printf "\n"
 
-  # Print the headers 
-  for TZ in $(echo $TIMEZONES); do
-    if [ $TZ = "Central" ]; then
-      CTZ="$fg_bold[$root]$CTZ$reset_color "
-      printf "$fg_bold[$root]"
-      printf ' %-14s' $TZ
-      printf "$reset_color"
-    else
-      printf ' %-14s' $TZ
-    fi
-  done
-  printf "\n"
-
-  # Print the time
-  #for TZ in $(echo $TIMEZONES); do
-  #  ZONE = $(echo $TZ)
-  #  printf ' %-14s' $ZONE
-  #done
-  printf ' %-14s %-14s %-14s' $HongKong $Pacific $Mountain
-  printf "$fg_bold[$root]"
-  printf ' %-14s' $Central
-  printf "$reset_color"
-  printf ' %-14s %-14s\n' $Eastern $London
-  printf '\n'
+    # Print the time
+    #for TZ in $(echo $TIMEZONES); do
+    #  ZONE = $(echo $TZ)
+    #  printf ' %-14s' $ZONE
+    #done
+    printf ' %-11s %-11s %-11s' $HongKong $Pacific $Mountain
+    printf "$fg_bold[$root]"
+    printf ' %-11s' $Central
+    printf "$reset_color"
+    printf ' %-11s %-11s\n' $Eastern $London
+    printf '\n'
+  else
+    # Print in single column
+    for TZ in $(echo $TIMEZONES); do
+      printf '%-12s %12s\n' $TZ $(echo $TZ)
+    done
+  fi
 }
 
 # Archive older notes to the appropriate Year folder
@@ -257,12 +264,10 @@ nl() {
       then 
 	      printf " $fg_bold[$root]| $reset_color"
         printf '%-17s %2d' $d $FC
-        #printf "$(echo \($FC\))"
 	      printf " $fg_bold[$root]$reset_color"
       else
 	      printf " $fg_bold[$root]| $reset_color"
         printf '%-17s %2d' $d $FC
-        #printf "$(echo $FC)"
 	      printf " $fg_bold[$root]$reset_color\n"
       fi
       
@@ -284,8 +289,14 @@ nl() {
       C2=$((C2+1))
     done
   ws
-  pw 
-  cl
+
+   # This should only display if COLS > 2
+  if [ $COLS -lt 3 ]
+    then return
+  else 
+    pw 
+    cl
+  fi
   
   fi
 }
