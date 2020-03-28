@@ -85,6 +85,7 @@ dt() {
   YEAR=`date +%Y`
   MONTH=`date +%B`
   DAY=`date +%a`
+  FDAY=`date +%A`
   DN=`date +%d`
   YMONTH=`date +%Y-%m`
 }
@@ -94,15 +95,15 @@ dt
 
 # print out the week, highlight today
 pw() {
-  DAYS="Sun Mon Tue Wed Thu Fri Sat"
-  printf "\n"
+  DAYS="Sunday Monday Tuesday Wednesday Thursday Friday Saturday"
+  printf "\n\n"
   printf " $fg_bold[$root]$MONTH $DN$reset_color\n"
   for d in $(echo $DAYS); do
-    if [ $d = $DAY ];
+    if [ $d = $FDAY ];
     then
-      printf " $fg_bold[$root]$d$reset_color  "
+      printf " $fg_bold[$root]$d$reset_color"
     else
-      printf " $d  "
+      printf " $d"
     fi
   done
   printf "\n\n"
