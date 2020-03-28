@@ -77,8 +77,16 @@ alias pipup='pip list --outdated | grep -v "^\-e" | cut -d " " -f 1  | xargs -n1
 
 # Dates need to be functionalized so that they can be called and updated 
 # from time to time (and not just when a new shell is spawned)
-WIDTH=`tput cols`
-HEIGHT=`tput lines`
+
+getcols(){
+  WIDTH=`tput cols`
+  HEIGHT=`tput lines`
+  case $WIDTH in 
+    [0-8][0-9]|90      ) COLS=2;;
+    9[1-9]|10[0-9]  ) COLS=3;;
+    1[1-9][0-9]|[2-9][0-9][0-9] ) COLS=4;;
+  esac
+}
 
 dt() {
   TODAY=`date +%Y-%m-%d`
@@ -90,7 +98,8 @@ dt() {
   YMONTH=`date +%Y-%m`
 }
 
-# Call dt to set initial date
+# Call to get window size and set initial date
+getcols
 dt
 
 # print out the week, highlight today
@@ -119,9 +128,9 @@ ws() {
     printf "\n\n $fg_bold[$root]Workspaces$reset_color\n"
     REPOS=`ls ~/Workspace/`
     for r in $(echo $REPOS); do
-      if [ $((C%4)) -gt 0 ]; then
+      if [ $((C%$COLS)) -gt 0 ]; then
         printf " $fg_bold[$root]# $reset_color"
-        printf '%-14s' $r
+        printf '%-21s' $r
       else
         printf " $fg_bold[$root]# $reset_color"
         printf '%-14s\n' $r
@@ -212,6 +221,7 @@ n() {
 
 # Notes - List all notes (trim off extension for now)
 nl() {
+  getcols
   dt
   an
   command clear 
@@ -238,23 +248,22 @@ nl() {
         
     NUM=${#DIRS[@]}
     CWIDTH=14
-    COLS=$(($WIDTH/20))
 
     C=1
-
+    printf " $fg_bold[$root]Directories$reset_color\n"
     for d in $DIRS; do
       FC=`ls $NOTESDIR/$d|wc -l`
-      if [ $((C%4)) -gt 0 ]
+      if [ $((C%$COLS)) -gt 0 ]
       then 
-	      printf " $fg_bold[$root][ $reset_color"
-        printf '%-14s' $d
-        printf "$(echo $FC)"
-	      printf " $fg_bold[$root]]$reset_color"
+	      printf " $fg_bold[$root]| $reset_color"
+        printf '%-17s %2d' $d $FC
+        #printf "$(echo \($FC\))"
+	      printf " $fg_bold[$root]$reset_color"
       else
-	      printf " $fg_bold[$root][ $reset_color"
-        printf '%-14s' $d
-        printf "$(echo $FC)"
-	      printf " $fg_bold[$root]]$reset_color\n"
+	      printf " $fg_bold[$root]| $reset_color"
+        printf '%-17s %2d' $d $FC
+        #printf "$(echo $FC)"
+	      printf " $fg_bold[$root]$reset_color\n"
       fi
       
       C=$((C+1))
@@ -262,8 +271,9 @@ nl() {
     printf '\n\n'
 
     C2=1
+    printf "\n $fg_bold[$root]Files$reset_color\n"
     for fl in $(echo $FILES); do
-      if [ $((C2%3)) -gt 0 ]
+      if [ $((C2%$COLS)) -gt 0 ]
       then
 	      printf " $fg_bold[$root]> $reset_color"
         printf '%-20s ' $fl
