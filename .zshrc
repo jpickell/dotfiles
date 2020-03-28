@@ -132,17 +132,39 @@ ws() {
 
 # World Clocks
 cl(){
-  PTZ=`TZ=:America/Los_Angeles date +%T`
-  MTZ=`TZ=:America/Denver date +%T`
-  CTZ=`TZ=:America/Chicago date +%T`
-  ETZ=`TZ=:America/New_York date +%T`
+  TIMEZONES="HongKong Pacific Mountain Central Eastern London"
 
-  TIMEZONES="Pacific  Mountain Central Eastern"
+  HongKong=(`TZ=:HongKong date +%T`)
+  Pacific=`TZ=:America/Los_Angeles date +%T`
+  Mountain=`TZ=:America/Denver date +%T`
+  Central=`TZ=:America/Chicago date +%T`
+  Eastern=`TZ=:America/New_York date +%T`
+  London=`TZ=:Europe/London date +%T`
+
+  # Print the headers 
   for TZ in $(echo $TIMEZONES); do
-    printf ' %-14s' $TZ
+    if [ $TZ = "Central" ]; then
+      CTZ="$fg_bold[$root]$CTZ$reset_color "
+      printf "$fg_bold[$root]"
+      printf ' %-14s' $TZ
+      printf "$reset_color"
+    else
+      printf ' %-14s' $TZ
+    fi
   done
   printf "\n"
-  printf ' %-14s %-14s %-14s %-14s\n' $PTZ $MTZ $CTZ $ETZ
+
+  # Print the time
+  #for TZ in $(echo $TIMEZONES); do
+  #  ZONE = $(echo $TZ)
+  #  printf ' %-14s' $ZONE
+  #done
+  printf ' %-14s %-14s %-14s' $HongKong $Pacific $Mountain
+  printf "$fg_bold[$root]"
+  printf ' %-14s' $Central
+  printf "$reset_color"
+  printf ' %-14s %-14s\n' $Eastern $London
+  printf '\n'
 }
 
 # Archive older notes to the appropriate Year folder
