@@ -105,7 +105,7 @@ dt
 # print out the week, highlight today
 pw() {
   DAYS="Sunday Monday Tuesday Wednesday Thursday Friday Saturday"
-  printf "\n\n"
+  printf "\n"
   printf " $fg_bold[$root]$MONTH $DN$reset_color |"
   for d in $(echo $DAYS); do
     if [ $d = $FDAY ];
@@ -125,7 +125,7 @@ ws() {
     cd ~/Workspace/$*;clear
   else
     C=1
-    printf "\n\n $fg_bold[$root]Workspaces$reset_color\n"
+    printf "\n $fg_bold[$root]Workspaces$reset_color\n"
     REPOS=`ls ~/Workspace/`
     for r in $(echo $REPOS); do
       if [ $((C%$COLS)) -gt 0 ]; then
@@ -137,11 +137,12 @@ ws() {
       fi
     C=$((C+1))
     done
+    printf "\n"
   fi
 }
 
 # World Clocks
-cl(){
+tz(){
   # Need to convert this to use a hash
   TIMEZONES="HongKong Pacific Mountain Central Eastern London"
 
@@ -273,9 +274,11 @@ nl() {
       
       C=$((C+1))
     done
-    printf '\n\n'
+    printf '\n'
 
     C2=1
+    # Maybe truncate the filename display if it exceeds a 
+    # certain length to maintain the visual styling.
     printf "\n $fg_bold[$root]Files$reset_color\n"
     for fl in $(echo $FILES); do
       if [ $((C2%$COLS)) -gt 0 ]
@@ -288,14 +291,15 @@ nl() {
       fi
       C2=$((C2+1))
     done
-  ws
+    printf "\n"
 
-   # This should only display if COLS > 2
+  ws
+  # This should only display if COLS > 2
   if [ $COLS -lt 3 ]
     then return
   else 
     pw 
-    cl
+    tz
   fi
   
   fi
