@@ -143,9 +143,5 @@ For more dotfiles head over to <a href="https://dotfiles.github.io">https://dotf
 
 ---
 
-
-<<<<<<< HEAD
-Last Updated: Sun 01 Mar 2020 04:26:32 PM CST
 =======
 Last Updated: Sun 01 Mar 2020 04:26:32 PM CST
->>>>>>> 1756ba0af521e340fd4ac10ca8317e3d8d3371e2
