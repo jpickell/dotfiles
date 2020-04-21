@@ -3,16 +3,50 @@
 
 My "dotfile" collection.   Lots of prompt and environment customization for Bash and Vim along with a couple of legacy dotfiles that I keep around for historical reasons.
 
-- [.bashrc](#.bashrc)
-- [.bash_profile](#.bash_profile)
 - [.zshrc](#.zshrc)
 - [jkp.zsh-theme](#jkp.zsh-theme)
+- [.bashrc](#.bashrc)
+- [.bash_profile](#.bash_profile)
 - [.colors](#.colors)
 - [.emacs](#.emacs)
 - [.git](#.git)
 - [.gvimrc](#.gvimrc)
 - [.screenrc](#.screenrc)
 - [.vim](#.vim)
+
+---
+**<a name=".zshrc">.zshrc</a>**
+- Now that MacOS (as of Catalina) has switched to ZSH as the default shell, I'm giving it a try, so to that end I've added my new zshrc to this repo.
+- Includes improved note functions
+
+**New ZSH Functions for Note Taking**
+<img src="images/Notes.png" alt="Notes Overview">
+- Notes 
+   1. **n**  -- By itself will create a note with today's date as the name of the note.  With an argument it will create a note with that name if it does not already exist.  If the argument is a directory, it will create the note with today's date as the name within the directory.  If the note already exists, it will open the existing note in $EDITOR
+   2. **nl**  -- Lists all existing notes.  (Notes are created and stored in ~/Notes)
+   3. **nv** <filename> -- view a particular note 
+   4. **ns** <searchterm> -- uses grep to search all notes for the given search term
+
+- World Clock Display
+  1. **cl** -- Display current time in various time zones with the local timezone highlighted
+  <img src="images/world_Clocks.png" alt="Current Time and Time Zone display">
+
+- Weekdays
+  1. **pw** -- Print the current date and the weekdays with the current day highlighted
+  <img src="images/print_week.png" alt="Days of the week">
+
+- Working with the Workspace
+   1. **ws** -- By itself will list all directories under ~/Workspace.   With an argument it will change to that working directory and clear the screen
+
+
+[-top-](#top)
+
+---
+
+**<a name="jkp.zsh-theme">jkp.zsh-theme</a>**
+- Zsh theme that sets the prompt to include user, date, pwd and git status.  Prompt turns red when sudo'ed to root.
+
+[-top-](#top)
 
 ---
 
@@ -62,21 +96,6 @@ Command logging to the PROMPT_COMMAND per https://spin.atomicobject.com/2016/05/
 
 **<a name=".bash_profile">.bash_profile</a>**
 - simple redirect to my .bashrc
-
-[-top-](#top)
-
----
-
-**<a name=".zshrc">.zshrc</a>**
-- Now that MacOS (as of Catalina) has switched to ZSH as the default shell, I'm giving it a try, so to that end I've added my new zshrc to this repo.
-- Includes improved note functions
-
-[-top-](#top)
-
----
-
-**<a name="jkp.zsh-theme">jkp.zsh-theme</a>**
-- Zsh theme that sets the prompt to include user, date, pwd and git status.  Prompt turns red when sudo'ed to root.
 
 [-top-](#top)
 
