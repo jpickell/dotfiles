@@ -199,6 +199,23 @@ an() {
   fi
 }
 
+# Todos - Manage todo file
+t() {
+  TODO=$NOTESDIR/"Todo.md"
+  if [ $* ]
+    then
+      case $* in 
+        a) echo "Add a Todo";;
+        d) echo "Delete a Todo";;
+        l) echo "List Todos"
+            cat $TODO
+          ;;
+      esac
+    else
+      $EDITOR $TODO
+  fi
+}
+
 # Notes - Edit new or existing, defaults to .md
 n() { 
   dt
@@ -279,7 +296,7 @@ nl() {
     C2=1
     # Maybe truncate the filename display if it exceeds a 
     # certain length to maintain the visual styling.
-    printf "\n $fg_bold[$root]Files$reset_color\n"
+    printf "\n $fg_bold[$root]Unfiled Notes$reset_color\n"
     for fl in $(echo $FILES); do
       if [ $((C2%$COLS)) -gt 0 ]
       then
