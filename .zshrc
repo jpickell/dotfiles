@@ -212,13 +212,13 @@ td() {
         c) echo "Complete a Todo";;
         d) echo "Delete a Todo";;
 
-        l) printf " $fg_bold[$root]Todos$reset_color\n"
+        l) printf "\n $fg_bold[$root]Todos$reset_color\n"
             C=1
             while read T; do
               L=("${(@s/:/)T}")
-              if [[ $L[4] != "" ]]
+              if [[ -z $L[4] ]]
                 then
-                  printf ' [%2s] %s | %s\n' $C $L[3] $L[5]
+                  printf ' [%2s] %s | %s : %s\n' $C $L[3] $L[1] $L[5]
                   ((C++))
               fi
             done < $TODO
