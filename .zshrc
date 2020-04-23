@@ -200,16 +200,30 @@ an() {
 }
 
 # Todos - Manage todo file
-t() {
+f() {for e in ${(s.:.)1}; print $T}
+td() {
+  # 1-Category:2-Start Date:3-Due Date:4-Done Date:5-Description
   TODO=$NOTESDIR/"Todo.md"
+
   if [ $* ]
     then
       case $* in 
         a) echo "Add a Todo";;
+        c) echo "Complete a Todo";;
         d) echo "Delete a Todo";;
-        l) echo "List Todos"
-            cat $TODO
+
+        l) printf " $fg_bold[$root]Todos$reset_color\n"
+            C=1
+            while read T; do
+              L=("${(@s/:/)T}")
+              if [[ $L[4] != "" ]]
+                then
+                  printf ' [%2s] %s | %s\n' $C $L[3] $L[5]
+                  ((C++))
+              fi
+            done < $TODO
           ;;
+
       esac
     else
       $EDITOR $TODO
@@ -311,6 +325,7 @@ nl() {
     printf "\n"
 
   ws
+  td l
   # This should only display if COLS > 2
   if [ $COLS -lt 3 ]
     then return
