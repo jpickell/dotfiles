@@ -28,22 +28,24 @@ else
     Linux)
       	export EDITOR='gvim'
       	export YESTERDAY=`date --date="1 day ago" +%Y-%m-%d`
-	alias au='apt update'
-	alias auu='apt upgrade'
-	alias as='apt search'
-	alias ai='apt install'
-	alias ar='apt remove'
-	alias al='apt list --upgradable'
-    ;;
+        export DDATE=`date --date="+7 days" +%m/%d/%y`
+      	alias au='apt update'
+	      alias auu='apt upgrade'
+	      alias as='apt search'
+	      alias ai='apt install'
+	      alias ar='apt remove'
+	      alias al='apt list --upgradable'
+        ;;
     Darwin)
       	export EDITOR='mvim'
-     	export YESTERDAY=`date -v-1d +%F`
+     	  export YESTERDAY=`date -v-1d +%F`
+     	  export DDATE=`date -v+7d +%D`
         alias bu='brew update'
         alias bs='brew search'
         alias bi='brew install'
         alias br='brew remove'
         alias bl='brew list'
-    ;;
+        ;;
   esac
 fi
 
@@ -90,6 +92,7 @@ getcols(){
 
 dt() {
   TODAY=`date +%Y-%m-%d`
+  TDATE=`date +%m/%d/%y`
   YEAR=`date +%Y`
   MONTH=`date +%B`
   DAY=`date +%a`
@@ -208,7 +211,16 @@ td() {
   if [ $* ]
     then
       case $* in 
-        a) echo "Add a Todo";;
+        a) echo "Add a Todo"
+           echo " Enter the category [A,B,C,J,O]: "; read CAT
+           echo " Enter the due date: [$DDATE] " ; read NDATE
+           echo " Enter description: "; read DESC
+           if [[ -z $NDATE ]]; then NDATE=$DDATE;fi
+           if [[ $NDATE -ne $DDATE ]]; then DDATE=$NDATE;fi 
+           printf 'Adding: %s | %s : %s\n' $DDATE ${(U)CAT} $DESC
+           echo "${(U)CAT}:$TDATE:$DDATE::$DESC">>$TODO
+           ;;
+
         c) echo "Complete a Todo";;
         d) echo "Delete a Todo";;
 
