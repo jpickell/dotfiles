@@ -27,6 +27,13 @@ My "dotfile" collection.   Lots of prompt and environment customization for Bash
    3. **nv** <filename> -- view a particular note 
    4. **ns** <searchterm> -- uses grep to search all notes for the given search term
 
+- Todos
+  1. **td** -- Opens the Todo file for raw editing
+  2. **td a** -- Add a new Todo
+  3. **td c** -- Complete a Todo (Not Yet Implemented)
+  4. **td d** -- Delete a Todo (Not Yet Implemented)
+  5. **td l** -- List active Todos
+
 - World Clock Display
   1. **cl** -- Display current time in various time zones with the local timezone highlighted
   <img src="images/world_Clocks.png" alt="Current Time and Time Zone display">
@@ -35,7 +42,7 @@ My "dotfile" collection.   Lots of prompt and environment customization for Bash
   1. **pw** -- Print the current date and the weekdays with the current day highlighted
   <img src="images/print_week.png" alt="Days of the week">
 
-- Working with the Workspace
+- Workspaces - where I keep things I'm currently working on
    1. **ws** -- By itself will list all directories under ~/Workspace.   With an argument it will change to that working directory and clear the screen
 
 
