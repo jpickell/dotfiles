@@ -207,12 +207,13 @@ f() {for e in ${(s.:.)1}; print $T}
 td() {
   # 1-Category:2-Start Date:3-Due Date:4-Done Date:5-Description
   TODO=$NOTESDIR/"Todo.md"
+  CATEGORY="A B C J O"
 
   if [ $* ]
     then
       case $* in 
         a) echo "Add a Todo"
-           echo " Enter the category [A,B,C,J,O]: "; read CAT
+           echo " Enter the category [$CATEGORY]: "; read CAT
            echo " Enter the due date: [$DDATE] " ; read NDATE
            echo " Enter description: "; read DESC
            if [[ -z $NDATE ]]; then NDATE=$DDATE;fi
