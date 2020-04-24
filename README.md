@@ -28,11 +28,13 @@ My "dotfile" collection.   Lots of prompt and environment customization for Bash
    4. **ns** <searchterm> -- uses grep to search all notes for the given search term
 
 - Todos
-  1. **td** -- Opens the Todo file for raw editing
+  The Todo file lists each todo, one line at a time with 
+  1. **td** -- Opens the Todo file for raw editing; one todo per line, with the following format:
+        1. Category:Start Date:Due Date:Completion Date:Description
   2. **td a** -- Add a new Todo
   3. **td c** -- Complete a Todo (Not Yet Implemented)
   4. **td d** -- Delete a Todo (Not Yet Implemented)
-  5. **td l** -- List active Todos
+  5. **td l** -- List active Todos in the format of Due Date | Category : Description
 
 - World Clock Display
   1. **cl** -- Display current time in various time zones with the local timezone highlighted
