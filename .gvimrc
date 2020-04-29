@@ -8,7 +8,7 @@ set paste
 set nonumber
 set noruler
 set linebreak
-set guioptions-=r  " remove right scrollbar
+" set guioptions-=r  " remove right scrollbar
 set guioptions-=m  " remove menu bar 
 set guioptions-=T  " remove toolbar
 set foldcolumn=2
@@ -27,6 +27,7 @@ colorscheme zen
 
 " let mapleader="\<space>"
 nnoremap <Leader>o :e .<CR>
+nnoremap <Leader>j :%!jq .<CR>
 nnoremap <Leader>z :call ZenMode()<CR>
 nnoremap <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 nnoremap <Leader>d :r! date +"\%Y-\%m-\%d \%H:\%M:\%S"<CR>
