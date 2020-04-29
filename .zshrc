@@ -35,6 +35,8 @@ else
 	      alias ai='apt install'
 	      alias ar='apt remove'
 	      alias al='apt list --upgradable'
+        alias vi="gvim"
+        alias v="gvim --remote-tab-silent $*"
         ;;
     Darwin)
       	export EDITOR='mvim'
@@ -45,6 +47,9 @@ else
         alias bi='brew install'
         alias br='brew remove'
         alias bl='brew list'
+        alias vi="mvim"
+        alias v="mvim --remote-tab-silent"
+
         ;;
   esac
 fi
@@ -207,7 +212,8 @@ f() {for e in ${(s.:.)1}; print $T}
 td() {
   # 1-Category:2-Start Date:3-Due Date:4-Done Date:5-Description
   TODO=$NOTESDIR/"Todo.md"
-  CATEGORY="A B C J O"
+  ACTIVE=""
+  CATEGORY="A B C R T J O"
 
   if [ $* ]
     then
@@ -222,7 +228,21 @@ td() {
            echo "${(U)CAT}:$TDATE:$DDATE::$DESC">>$TODO
            ;;
 
-        c) echo "Complete a Todo";;
+        c) echo "$fg_bold[$root]Choose an active item to complete$reset_color:"
+            C=1
+            while read T; do
+              L=("${(@s/:/)T}")
+              if [[ -z $L[4] ]]
+                then
+                  printf ' [%2s] %s | %s : %s\n' $C $L[3] $L[1] $L[5]
+                  ACTIVE+=$T
+                  ((C++))
+              fi
+            done < $TODO 
+            read ANS
+
+            echo $ACTIVE[$ANS]
+          ;;
         d) echo "Delete a Todo";;
 
         l) printf "\n $fg_bold[$root]Todos$reset_color\n"

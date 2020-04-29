@@ -19,7 +19,7 @@ My "dotfile" collection.   Lots of prompt and environment customization for Bash
 - Now that MacOS (as of Catalina) has switched to ZSH as the default shell, I'm giving it a try, so to that end I've added my new zshrc to this repo.
 - Includes improved note functions
 
-**New ZSH Functions for Note Taking**
+**N-Space: ZSH Functions for Note Taking**
 <img src="images/Notes.png" alt="Notes Overview">
 - __Notes__
    1. **n**  -- By itself will create a note with today's date as the name of the note.  With an argument it will create a note with that name if it does not already exist.  If the argument is a directory, it will create the note with today's date as the name within the directory.  If the note already exists, it will open the existing note in $EDITOR
