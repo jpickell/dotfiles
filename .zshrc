@@ -212,12 +212,13 @@ an() {
 # Todos - Manage todo file
 f() {for e in ${(s.:.)1}; print $T}
 td() {
-  # 1-Category:2-Start Date:3-Due Date:4-Done Date:5-Description
+  # 1-Category:2-Priority:3-Start Date:4-Due Date:5-Done Date:6-Description
   # Need to add Priority column and sort appropriately
 
   TODO=$NOTESDIR/"Todo.md"
   ACTIVE=""
   CATEGORY="A B C R T J O"
+  PRI="1 2 3 4 5"
 
   if [ $* ]
     then
@@ -225,20 +226,21 @@ td() {
         a) echo "Add a Todo"
            echo " Enter the category [$CATEGORY]: "; read CAT
            echo " Enter the due date: [$DDATE] " ; read NDATE
+           echo " Enter the priority: [$PRI] " ; read PRI
            echo " Enter description: "; read DESC
            if [[ -z $NDATE ]]; then NDATE=$DDATE;fi
            if [[ $NDATE -ne $DDATE ]]; then DDATE=$NDATE;fi 
            printf 'Adding: %s | %s : %s\n' $DDATE ${(U)CAT} $DESC
-           echo "${(U)CAT}:$TDATE:$DDATE::$DESC">>$TODO
+           echo "${(U)CAT}:$PRI:$TDATE:$DDATE::$DESC">>$TODO
            ;;
 
         c) echo "$fg_bold[$root]Choose an active item to complete$reset_color:"
             C=1
             while read T; do
               L=("${(@s/:/)T}")
-              if [[ -z $L[4] ]]
+              if [[ -z $L[5] ]]
                 then
-                  printf ' [%2s] %s | %s : %s\n' $C $L[3] $L[1] $L[5]
+                  printf ' [%2s] %s | %s : %s\n' $C $L[4] $L[2] $L[6]
                   ACTIVE+=$T
                   ((C++))
               fi
@@ -253,9 +255,31 @@ td() {
             C=1
             while read T; do
               L=("${(@s/:/)T}")
-              if [[ -z $L[4] ]]
+              if [[ -z $L[5] ]]
                 then
-                  printf ' [%2s] %s | %s : %s\n' $C $L[3] $L[1] $L[5]
+                  case $L[2] in
+                    5)   printf "$fg_bold[cyan]"
+                         printf ' [%2s] %s | %s : %s\n' $C $L[4] $L[1] $L[6] 
+                         printf "$reset_color" 
+                         ;;
+                    4)   printf "$fg_bold[white]"
+                         printf ' [%2s] %s | %s : %s\n' $C $L[4] $L[1] $L[6] 
+                         printf "$reset_color" 
+                         ;;
+                    3)   printf "$fg_bold[green]"
+                         printf ' [%2s] %s | %s : %s\n' $C $L[4] $L[1] $L[6] 
+                         printf "$reset_color" 
+                         ;;
+                    2)   printf "$fg_bold[yellow]"
+                         printf ' [%2s] %s | %s : %s\n' $C $L[4] $L[1] $L[6] 
+                         printf "$reset_color" 
+                         ;;
+                    1)   printf "$fg_bold[red]"
+                         printf ' [%2s] %s | %s : %s\n' $C $L[4] $L[1] $L[6] 
+                         printf "$reset_color" 
+                         ;;
+
+                   esac
                   ((C++))
               fi
             done < $TODO
