@@ -112,9 +112,11 @@ dt
 
 # print out the week, highlight today
 pw() {
+  NOW=`date +%I:%M\ %p`
   DAYS="Sunday Monday Tuesday Wednesday Thursday Friday Saturday"
   printf "\n"
-  printf " $fg_bold[$root]$MONTH $DN$reset_color |"
+  printf " $fg_bold[$root]$MONTH $DN$reset_color $NOW |"
+
   for d in $(echo $DAYS); do
     if [ $d = $FDAY ];
     then
@@ -211,6 +213,8 @@ an() {
 f() {for e in ${(s.:.)1}; print $T}
 td() {
   # 1-Category:2-Start Date:3-Due Date:4-Done Date:5-Description
+  # Need to add Priority column and sort appropriately
+
   TODO=$NOTESDIR/"Todo.md"
   ACTIVE=""
   CATEGORY="A B C R T J O"
@@ -298,15 +302,32 @@ nl() {
   an
   command clear 
 
-  echo " "
   FILES=""
   DIRS=""
   if [ $* ]
-    # Handle subdirectories
   then
+    # Handle subdirectories
     # Test to see if we're enumerating a dir or a file
-    echo $NOTESDIR/$* "\n----"
-    ls -c $NOTESDIR/$*|cut -f1 -d'.'
+    SUB=$*
+    ITEMS=`ls -c $NOTESDIR/$SUB`
+
+    printf "$fg_bold[$root]"
+    printf '%s/%s\n' $NOTESDIR $SUB
+	  printf "$reset_color"
+    printf '----\n'
+
+    for f in $( echo "$ITEMS"); do 
+      if [ $((C%$COLS)) -gt 0 ]
+      then
+        printf '%-25s' $f
+      else
+        printf '%-25s\n' $f
+      fi
+    C=$((C+1))
+    done
+
+  echo " "
+
   else 
 	  ITEMS=`ls -c $NOTESDIR | cut -f1 -d'.'`
     for f in $( echo "$ITEMS"); do 
@@ -320,6 +341,14 @@ nl() {
         
     NUM=${#DIRS[@]}
     CWIDTH=14
+
+   # This should only display if COLS > 2
+    if [ $COLS -lt 3 ]
+      then return
+    else 
+      pw 
+    #  tz
+    fi
 
     C=1
     printf " $fg_bold[$root]Directories$reset_color\n"
@@ -359,14 +388,6 @@ nl() {
 
   ws
   td l
-  # This should only display if COLS > 2
-  if [ $COLS -lt 3 ]
-    then return
-  else 
-    pw 
-    tz
-  fi
-  
   fi
 }
 
