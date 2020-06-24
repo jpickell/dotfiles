@@ -9,15 +9,11 @@
 ;;   https://github.com/jpickell/dotfiles
 ;;
 
-
 (package-initialize)
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 
 (message "* --[ Loading my Emacs init file ]--")
-
-;; Set size if running in GUI mode
-(when (display-graphic-p) (set-frame-size (selected-frame) 120 50))
 
 ;; uptimes
 (setq emacs-load-start-time (current-time))
@@ -27,7 +23,6 @@
 (server-start)
 (setq auto-fill t)
 (setq indent-tabs-mode nil) ; use spaces, not tabs
-
 
 ;; Keybindings
 ;;; general ;;;
@@ -41,7 +36,7 @@
 (global-set-key (kbd "C-a") 'org-agenda)
 (global-set-key (kbd "C-c") 'org-capture)
 (global-set-key (kbd "C-b") 'org-switchb)
-;;; End Keybindings
+;; End Keybindings
 
 ;; Modeline Settings
 (display-time) ; put the current time in the modeline
@@ -54,8 +49,7 @@
 (setq inhibit-startup-echo-area-message "Europa")
 (setq default-directory (concat (getenv "HOME") "/"))
 
-(add-to-list 'default-frame-alist '(foreground-color . "#f0f0f0"))
-(add-to-list 'default-frame-alist '(background-color . "#222255"))
+;; Set colors
 (set-foreground-color "#f0f0f0")
 (set-background-color "#151515")
 (copy-face 'default 'modeline)
@@ -65,10 +59,12 @@
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
 
+;; Set GUI options
 (when (display-graphic-p)
     (scroll-bar-mode 0)
     (tool-bar-mode 0)
     (menu-bar-mode 0)
+    (set-frame-size (selected-frame) 120 50)
     )
 
 ;;; Requirements
