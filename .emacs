@@ -24,6 +24,34 @@
 (setq auto-fill t)
 (setq indent-tabs-mode nil) ; use spaces, not tabs
 
+;; ====================
+;; insert date and time
+
+(defvar current-date-time-format "%a %b %d %H:%M:%S %Z %Y"
+  "Format of date to insert with `insert-current-date-time' func
+See help of `format-time-string' for possible replacements")
+
+(defvar current-time-format "%a %H:%M:%S"
+  "Format of date to insert with `insert-current-time' func.
+Note the weekly scope of the command's precision.")
+
+(defun insert-current-date-time ()
+  "insert the current date and time into current buffer.
+Uses `current-date-time-format' for the formatting the date/time."
+       (interactive)
+       (insert "==========\n")
+;       (insert (let () (comment-start)))
+       (insert (format-time-string current-date-time-format (current-time)))
+       (insert "\n")
+       )
+
+(defun insert-current-time ()
+  "insert the current time (1-week scope) into the current buffer."
+       (interactive)
+       (insert (format-time-string current-time-format (current-time)))
+       (insert "\n")
+       )
+
 ;; Keybindings
 ;;; general ;;;
 (global-set-key [print] 'ps-print-buffer)
@@ -31,6 +59,9 @@
 (global-set-key (kbd "C-f") 'find-file)
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
+;; Date / Time
+(global-set-key (kbd "M-d") 'insert-current-date-time)
+(global-set-key (kbd "M-t") 'insert-current-time)
 ;;; org-mode ;;;
 (global-set-key (kbd "C-l") 'org-store-link)
 (global-set-key (kbd "C-a") 'org-agenda)
