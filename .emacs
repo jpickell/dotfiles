@@ -18,6 +18,9 @@
 ;; uptimes
 (setq emacs-load-start-time (current-time))
 
+;; Backup file location
+(setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
+
 (put 'rmail 'disabled t) ; avoid mbox destruction
 
 (server-start)
@@ -26,7 +29,6 @@
 
 ;; ====================
 ;; insert date and time
-
 (defvar current-date-time-format "%a %b %d %H:%M:%S %Z %Y"
   "Format of date to insert with `insert-current-date-time' func
 See help of `format-time-string' for possible replacements")
@@ -69,9 +71,6 @@ Uses `current-date-time-format' for the formatting the date/time."
 (global-set-key (kbd "C-b") 'org-switchb)
 ;; End Keybindings
 
-;; Modeline Settings
-(display-time) ; put the current time in the modeline
-
 (setq next-line-add-newlines nil)
 (blink-cursor-mode 0)
 (setq initial-scratch-message "")
@@ -84,19 +83,57 @@ Uses `current-date-time-format' for the formatting the date/time."
 (set-foreground-color "#f0f0f0")
 (set-background-color "#151515")
 (copy-face 'default 'modeline)
-(set-face-background 'modeline "#f0f0f0")
-(set-face-foreground 'modeline "#000000")
-(set-face-attribute 'fringe nil :background "#151515" :foreground "#ff0000")
+(set-face-foreground 'modeline "#f0f0f0")
+(set-face-background 'modeline "#4477aa")
+(set-face-attribute 'fringe nil :background "#151515" :foreground "#ff0000" :height 200)
+(fringe-mode 20)
 (global-font-lock-mode t)
+(set-face-attribute 'default nil
+                :family "Andale Mono" :height 165 :weight 'normal)
 (setq font-lock-maximum-decoration t)
+
+;; Modeline Settings
+
+(setq mode-line-system-identification  
+  (substring (system-name) 0
+             (string-match "\\..+" (system-name))))
+
+(setq default-mode-line-format
+      (list " "
+            'mode-line-system-identification
+            " | %18f | "
+            'mode-line-modified
+            "%4l : %2C "
+            '(-3 . "%P")
+            " | %m"
+            'minor-mode-alist 
+            'mode-line-process  
+            " | "
+            (format-time-string current-date-time-format (current-time))
+            " |"
+            "%-"))
+
+;; Start with new default.
+(setq mode-line-format default-mode-line-format)
 
 ;; Set GUI options
 (when (display-graphic-p)
     (scroll-bar-mode 0)
     (tool-bar-mode 0)
     (menu-bar-mode 0)
-    (set-frame-size (selected-frame) 120 50)
+    (set-frame-size (selected-frame) 150 60)
     )
+
+;; Set World Clock locations
+(setq display-time-world-list '(("China/Hong_Kong" "Hong Kong")
+				("America/Los_Angeles" "Pacific ")
+				("America/Denver" "Mountain")
+				("America/Chicago" "Central")
+				("America/New_York" "Eastern")
+				("Europe/London" "London")
+				("Europe/Berlin" "Berlin")
+				))
+(setq display-time-world-time-format "%R")
 
 ;;; Requirements
 (require 'evil)

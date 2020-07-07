@@ -49,6 +49,7 @@ else
         alias bl='brew list'
         alias vi="mvim"
         alias v="mvim --remote-tab-silent"
+        alias eo="grep \#\# ~/Notes/Misc/Extreme_Ownership.md"
 
         ;;
   esac
@@ -66,6 +67,7 @@ alias more="less"
 alias l="less"
 alias s="sudo -Es"
 alias lsd="ls -al|grep ^d"
+alias e="emacs"
 alias vi=$EDITOR
 alias weather="curl wttr.in/63366"
 alias moon="curl wttr.in/moon"
@@ -215,7 +217,9 @@ td() {
   # 1-Category:2-Priority:3-Start Date:4-Due Date:5-Done Date:6-Description
   # Need to add Priority column and sort appropriately
 
+  #TODO=`cat $NOTESDIR/"Todo.md|sort --field-separator=':' --key=2"`
   TODO=$NOTESDIR/"Todo.md"
+  TDATA=
   ACTIVE=""
   CATEGORY="A B C R T J O"
   PRI="1 2 3 4 5"
@@ -235,24 +239,28 @@ td() {
            ;;
 
         c) echo "$fg_bold[$root]Choose an active item to complete$reset_color:"
+            set -A Active
             C=1
             while read T; do
               L=("${(@s/:/)T}")
               if [[ -z $L[5] ]]
                 then
                   printf ' [%2s] %s | %s : %s\n' $C $L[4] $L[2] $L[6]
-                  ACTIVE+=$T
+                  ACTIVE+=($T)
                   ((C++))
               fi
             done < $TODO 
             read ANS
 
-            echo $ACTIVE[$ANS]
+            printf '%s\n' $ACTIVE[$ANS]
+ 
           ;;
+
         d) echo "Delete a Todo";;
 
         l) printf "\n $fg_bold[$root]Todos$reset_color\n"
             C=1
+
             while read T; do
               L=("${(@s/:/)T}")
               if [[ -z $L[5] ]]
@@ -278,7 +286,6 @@ td() {
                          printf ' [%2s] %s | %s : %s\n' $C $L[4] $L[1] $L[6] 
                          printf "$reset_color" 
                          ;;
-
                    esac
                   ((C++))
               fi
@@ -371,7 +378,7 @@ nl() {
       then return
     else 
       pw 
-    #  tz
+      tz
     fi
 
     C=1
