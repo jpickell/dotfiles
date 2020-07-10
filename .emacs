@@ -3,7 +3,7 @@
 ;; Author: Jeff Pickell
 ;; Keywords: dotfile
 ;; Initial version: Sep 19 2000
-;; Last Updated: Tue Jun 23, 2020 09:37pm 
+;; Last Updated: Tue Jul 09, 2020 09:37pm 
 ;;
 ;; Latest version should be available at:
 ;;   https://github.com/jpickell/dotfiles
@@ -42,7 +42,6 @@ Note the weekly scope of the command's precision.")
 Uses `current-date-time-format' for the formatting the date/time."
        (interactive)
        (insert "==========\n")
-;       (insert (let () (comment-start)))
        (insert (format-time-string current-date-time-format (current-time)))
        (insert "\n")
        )
@@ -85,36 +84,30 @@ Uses `current-date-time-format' for the formatting the date/time."
 (copy-face 'default 'modeline)
 (set-face-foreground 'modeline "#f0f0f0")
 (set-face-background 'modeline "#4477aa")
-(set-face-attribute 'fringe nil :background "#151515" :foreground "#ff0000" :height 200)
+(set-face-attribute 'fringe nil :family "Andale Mono" :background "#151515" :foreground "#ff0000" :height 200)
 (fringe-mode 20)
 (global-font-lock-mode t)
-(set-face-attribute 'default nil
-                :family "Andale Mono" :height 165 :weight 'normal)
 (setq font-lock-maximum-decoration t)
 
 ;; Modeline Settings
-
-(setq mode-line-system-identification  
+(setq jkp-system-identification  
   (substring (system-name) 0
              (string-match "\\..+" (system-name))))
 
-(setq default-mode-line-format
-      (list " "
-            'mode-line-system-identification
-            " | %18f | "
-            'mode-line-modified
-            "%4l : %2C "
-            '(-3 . "%P")
-            " | %m"
-            'minor-mode-alist 
-            'mode-line-process  
-            " | "
+(setq-default mode-line-format
+      (list "  "
             (format-time-string current-date-time-format (current-time))
-            " |"
+            "\t| "
+	    (getenv "USER")
+            "@"
+            'jkp-system-identification
+            ;" | %16m"
+	    " | %f %4l %2C "
+            '(-3 . "%P")
+	    " "
+            'mode-line-modified
             "%-"))
 
-;; Start with new default.
-(setq mode-line-format default-mode-line-format)
 
 ;; Set GUI options
 (when (display-graphic-p)
@@ -138,6 +131,15 @@ Uses `current-date-time-format' for the formatting the date/time."
 ;;; Requirements
 (require 'evil)
 (evil-mode 1)
+
+(setq
+  org-ellipsis "…"
+   ;; ➡, ⚡, ▼, ↴, , ∞, ⬎, ⤷, ⤵
+  org-agenda-files (quote ("~/Notes/todo.org" "~/Notes/appointments.org"))
+  org-deadline-warning-days 7
+  org-agenda-breadcrumbs-separator " ❱ "
+  org-directory "~/Notes")
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
