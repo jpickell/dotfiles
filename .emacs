@@ -80,16 +80,16 @@ Uses `current-date-time-format' for the formatting the date/time."
 (setq default-directory (concat (getenv "HOME") "/"))
 
 ;; Set colors
-(set-foreground-color "#f0f0f0")
-(set-background-color "#151515")
-(copy-face 'default 'modeline)
-(set-face-foreground 'modeline "#f0f0f0")
-(set-face-background 'modeline "#4477aa")
-(set-face-attribute 'fringe nil :background "#151515" :foreground "#ff0000" :height 200)
+;;(set-foreground-color "#f0f0f0")
+;;(set-background-color "#151515")
+;;(copy-face 'default 'modeline)
+;;(set-face-foreground 'modeline "#f0f0f0")
+;;(set-face-background 'modeline "#4477aa")
+(set-face-attribute 'fringe nil :background "#ffffff" :foreground "#ff0000" :height 200)
 (fringe-mode 20)
 (global-font-lock-mode t)
 (set-face-attribute 'default nil
-                :family "Andale Mono" :height 165 :weight 'normal)
+                :family "Bitstream Charter" :height 100 :weight 'normal)
 (setq font-lock-maximum-decoration t)
 
 ;; Modeline Settings
