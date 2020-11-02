@@ -18,8 +18,12 @@ colorscheme zen
 
 nnoremap <Leader>d :r! date +"\%Y-\%m-\%d \%H:\%M:\%S"<CR>
 nnoremap <Leader>t :r! date +"\%H:\%M:\%S"<CR>
+nnoremap <Leader>T :r! date +"[\%H:\%M:\%S]"<CR>
 nnoremap <Leader>j :%!jq .<CR>
 nnoremap <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+
+autocmd!
+autocmd VimEnter */N* $pu=strftime('[%H:%M:%S]%n%n')
 
 " remap the space bar to toggle folds
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
