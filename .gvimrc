@@ -1,5 +1,5 @@
 syntax on
-set guifont=Menlo\ Regular:h18
+"set guifont=Menlo\ Regular:h18
 set nocompatible
 set path+=**
 set wildmenu
@@ -10,8 +10,7 @@ set linebreak
 set tabstop=2
 " set guioptions-=r " remove right scrollbar
 " set lines=40 columns=100           " size of the editable area
-set laststatus=0
-set statusline=%F%m%r\ (%-2{&ff}){%Y}[%l,%v]\ %=%{strftime(\"%m/%d/%Y\ %A%l:%M%p\ \")}
+set statusline=%F%m%r\ (%-2{&ff}){%Y}[%l,%v]\ %{wordcount().words}\ words\ %=%{strftime(\"%m/%d/%Y\ %A%l:%M%p\ \")}
 set laststatus=2
 set cursorline
 
