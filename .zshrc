@@ -459,7 +459,7 @@ yn() {
 nstats(){
 
   day=`wc -w $NOTESDIR/N/$TODAY.md|awk '{print $1}'`
-  total=`wc -w $NOTESDIR/N/*.md|awk '{print $1}'`
+  total=`wc -w $NOTESDIR/N/*.md|grep total|awk '{print $1}'`
 
   let mleft=150000-$total
   let dleft=1667-$day
