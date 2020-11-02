@@ -455,6 +455,21 @@ yn() {
   view $NOTESDIR/$YEAR/$YESTERDAY.md
 }
 
+# Print out my current Nanowrimo stats
+nstats(){
+
+  day=`wc -w $NOTESDIR/N/$TODAY.md|awk '{print $1}'`
+  total=`wc -w $NOTESDIR/N/*.md|awk '{print $1}'`
+
+  let mleft=150000-$total
+  let dleft=1667-$day
+
+  echo "Today: $day/$dleft"
+  echo "Total: $total/$mleft"
+
+
+}
+
 # ASDF Configs
 # https://asdf-vm.com/
 . $HOME/.asdf/asdf.sh
