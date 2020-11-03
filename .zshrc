@@ -463,9 +463,12 @@ nstats(){
 
   let mleft=150000-$total
   let dleft=1667-$day
+  let dper=`echo "scale=2; $day/1667*100"|bc -l`
+  let mper=`echo "scale=2; $total/50000*100"|bc -l`
 
-  echo "Today: $day/$dleft"
-  echo "Total: $total/$mleft"
+  printf '\tCurr\tRem\tPer\n'
+  printf 'Today:\t%s\t%s\t%.0f%%\n' $day $dleft $dper
+  printf 'Total:\t%s\t%s\t%3.0f%%\n' $total $mleft $mper
 
 
 }

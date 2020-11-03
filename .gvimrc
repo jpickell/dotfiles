@@ -24,6 +24,7 @@ nnoremap <Leader>b :let &background = ( &background == "dark"? "light" : "dark" 
 
 autocmd!
 autocmd VimEnter */N* $pu=strftime('[%H:%M:%S]%n%n')
+autocmd FileType markdown setlocal spell
 
 " remap the space bar to toggle folds
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
