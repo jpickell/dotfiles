@@ -1,5 +1,5 @@
 syntax on
-"set guifont=Menlo\ Regular:h18
+set guifont=Courier:h16
 set nocompatible
 set path+=**
 set wildmenu
@@ -16,11 +16,14 @@ set cursorline
 
 colorscheme zen
 
-nnoremap <Leader>d :r! date +"\%Y-\%m-\%d \%H:\%M:\%S"<CR>
-nnoremap <Leader>t :r! date +"\%H:\%M:\%S"<CR>
-nnoremap <Leader>T :r! date +"[\%H:\%M:\%S]"<CR>
-nnoremap <Leader>j :%!jq .<CR>
-nnoremap <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+nnoremap Ds :r! date +"\%Y-\%m-\%d \%H:\%M:\%S"<CR>
+nnoremap Dt :r! date +"\%H:\%M:\%S"<CR>
+nnoremap DT :r! date +"[\%H:\%M:\%S]"<CR>
+nnoremap JJ :%!jq .<CR>
+
+nnoremap tt :tabnext<cr>
+nnoremap tp :tabprev<cr>
+nnoremap bb :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
 autocmd!
 autocmd VimEnter */N* $pu=strftime('[%H:%M:%S]%n%n')
@@ -32,6 +35,9 @@ vnoremap <Space> zf
 
 function! MDF()
     " Set fold values based on Markdown Headers
+    if getline(v:lnum) =~ '^[.*$'
+        return ">1"
+    endif
     if getline(v:lnum) =~ '^# .*$'
         return ">1"
     endif
